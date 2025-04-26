@@ -1,0 +1,19 @@
+﻿@using WebTruyenTranh.Models
+@model AuthorModel
+
+@{
+    ViewData["Title"] = "Chỉnh sửa tác giả";
+}
+
+<h2>Chỉnh sửa Tác Giả</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="AuthorId" />
+    <div class="form-group">
+        <label for="Name">Tên tác giả</label>
+        <input type="text" class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Lưu</button>
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>

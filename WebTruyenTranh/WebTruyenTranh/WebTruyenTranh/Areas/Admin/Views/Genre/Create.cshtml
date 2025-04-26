@@ -1,0 +1,13 @@
+﻿@using WebTruyenTranh.Models
+@model GenreModel
+
+<h2>Thêm thể loại mới</h2>
+
+<form asp-action="Create">
+    <div class="mb-3">
+        <label class="form-label">Tên thể loại</label>
+        <input type="text" class="form-control" asp-for="Name" required />
+    </div>
+    <button type="submit" class="btn btn-success">💾 Lưu</button>
+    <a class="btn btn-secondary" href="/Admin/Genre/Index">🔙 Quay lại</a>
+</form>

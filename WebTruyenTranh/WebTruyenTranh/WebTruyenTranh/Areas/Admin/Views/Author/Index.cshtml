@@ -1,0 +1,82 @@
+﻿@using WebTruyenTranh.Models
+@model List<AuthorModel>
+
+@{
+    ViewData["Title"] = "Danh sách tác giả";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<a class="btn btn-dark shadow-sm" asp-action="Create">Thêm tác giả</a>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Tên Tác Giả</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+            <tr id="row-@author.AuthorId">
+                <td>@author.AuthorId</td>
+                <td>@author.Name</td>
+                <td>
+                    <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@author.AuthorId">Sửa</a>
+                    <button class="btn btn-danger btn-sm" onclick="showDeleteModal(@author.AuthorId)">Xóa</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal xác nhận xóa -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmLabel">Xác nhận xóa</h5>
+                <button type="button" class="btn-close border-0 rounded" data-bs-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                Bạn có chắc chắn muốn xóa tác giả này không?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        let selectedId = 0;
+
+        function showDeleteModal(id) {
+            selectedId = id;
+            var modal = new bootstrap.Modal(document.getElementById('deleteConfirmModal'));
+            modal.show();
+        }
+
+        $('#confirmDeleteBtn').click(function () {
+            $.ajax({
+                url: '/Admin/Author/DeleteConfirmed/' + selectedId,
+                type: 'POST',
+                success: function () {
+                    let modalElement = document.getElementById('deleteConfirmModal');
+                    let modalInstance = bootstrap.Modal.getInstance(modalElement);
+                    modalInstance.hide();
+                    $('#row-' + selectedId).fadeOut();
+                },
+                error: function () {
+                    alert('Đã có lỗi xảy ra khi xóa tác giả.');
+                }
+            });
+        });
+
+    </script>
+}

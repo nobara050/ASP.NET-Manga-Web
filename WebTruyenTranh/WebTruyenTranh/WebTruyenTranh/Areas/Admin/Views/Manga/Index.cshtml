@@ -1,0 +1,120 @@
+﻿@using WebTruyenTranh.Models.ViewModel
+@model List<MangaAuthorGenreViewModel>
+
+@{
+    ViewData["Title"] = "Danh Sách Truyện";
+}
+
+<link rel="stylesheet" href="admin/css/Manga/Index.css">
+
+<div class="container">
+    <h2 class="mb-4 text-center fw-bold text-dark">Danh sách truyện</h2>
+
+    <div class="d-flex justify-content-start mb-3">
+        <a class="btn btn-dark shadow-sm" asp-area="Admin" asp-controller="Manga" asp-action="Create">
+            <i class="bi bi-plus-lg"></i> Thêm truyện
+        </a>
+    </div>
+
+    <div class="table-responsive-lg">
+        <table class="table table-hover shadow-sm rounded-3 overflow-hidden align-middle">
+            <thead class="text-white text-center" style="background: linear-gradient(135deg, #343a40, #212529); font-size: 1rem;">
+                <tr>
+                    <th scope="col">MangaID</th>
+                    <th scope="col">Tên Truyện</th>
+                    <th scope="col">Ảnh bìa</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Người đăng</th>
+                    <th scope="col">Ngày tạo</th>
+                    <th scope="col">Hành động</th>
+                </tr>
+            </thead>
+            <tbody class="text-center" style="font-size: 1rem;">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="fw-semibold" style="vertical-align: middle;">@item.MangaModel.MangaId</td>
+                        <td class="text-start fw-semibold" style="vertical-align: middle;">@item.MangaModel.Title</td>
+                        <td style="vertical-align: middle;">
+                            <img src="@item.MangaModel.CoverImage" alt="Ảnh bìa"
+                                 class="img-thumbnail rounded object-fit-cover"
+                                 style="max-width: 80px; max-height: 100px;">
+                        </td>
+                        <td style="vertical-align: middle;">
+                            <span class="badge bg-success p-2">@item.MangaModel.Status</span>
+                        </td>
+                        <td style="vertical-align: middle;">@item.MangaModel.UserId</td>
+                        <td style="vertical-align: middle;">@item.MangaModel.CreatedAt.ToString("dd/MM/yyyy")</td>
+                        <td style="vertical-align: middle;">
+                            <div class="d-flex justify-content-center gap-2">
+                                <a class="btn btn-success btn-sm shadow-sm" asp-area="Admin" asp-controller="Manga" asp-action="Upload" asp-route-id="@item.MangaModel.MangaId">
+                                    <i class="bi bi-upload"></i> Upload
+                                </a>
+                                <a class="btn btn-warning btn-sm shadow-sm" asp-area="Admin" asp-controller="Manga" asp-action="Edit" asp-route-id="@item.MangaModel.MangaId">
+                                    <i class="bi bi-pencil-square"></i> Sửa
+                                </a>
+                                <a onclick="confirmDelete(@item.MangaModel.MangaId)" class="btn btn-danger btn-sm shadow-sm">
+                                    <i class="bi bi-trash"></i> Xóa
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+        <!-- Dialog xác nhận -->
+        <div id="deleteConfirmModal" class="modal" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Xác nhận xóa</h5>
+                        <button type="button" class="btn-close" onclick="closeModal()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        Bạn có chắc chắn muốn xóa truyện này không?
+                    </div>
+                    <div class="modal-footer">
+                        <form id="deleteForm" method="post">
+                            <button type="button" class="btn btn-secondary" onclick="closeModal()">Hủy</button>
+                            <button type="submit" class="btn btn-danger">Xóa</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Dialog xác nhận -->
+
+    </div>
+</div>
+
+<script>
+    function confirmDelete(id) {
+        let form = document.getElementById("deleteForm");
+        form.action = "/Admin/Manga/Delete/" + id; // Cập nhật action form
+
+        let modal = document.getElementById("deleteConfirmModal");
+        modal.style.display = "block"; // Hiển thị modal
+    }
+
+    function closeModal() {
+        let modal = document.getElementById("deleteConfirmModal");
+        modal.style.display = "none"; // Ẩn modal
+    }
+
+    // Đóng modal khi nhấn bên ngoài
+    window.onclick = function(event) {
+        let modal = document.getElementById("deleteConfirmModal");
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+</script>
+
+
+
+
+
+
+

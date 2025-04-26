@@ -1,26 +1,34 @@
 ﻿@{
     Layout = null;
 }
+@{
+    ViewData["Title"] = "Login";
+}
 
-<div class="container">
-    <section id="content">
-        <form action="login.php" method="post">
-            <h1>Admin Login</h1>
-            <span>
-                <!-- Thông báo đăng nhập sẽ hiển thị ở đây -->
-            </span>
-            <div class="input-group">
-                <input type="text" placeholder="Username" required="" name="adminUser">
-            </div>
-            <div class="input-group">
-                <input type="password" placeholder="Password" required="" name="adminPass">
-            </div>
-            <div class="input-group">
-                <input type="submit" value="Log in">
-            </div>
-        </form>
-        <div class="button">
-            <a href="#">Quên mật khẩu</a>
-        </div>
-    </section>
-</div>
+<h2>Login</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div style="color: red;">
+        <strong>@ViewBag.Error</strong>
+    </div>
+}
+
+<form method="post" asp-action="Login">
+    <div>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required="required" placeholder="Enter your username" />
+    </div>
+
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required="required" placeholder="Enter your password" />
+    </div>
+
+    <div>
+        <button type="submit">Login</button>
+    </div>
+
+    <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+</form>
+

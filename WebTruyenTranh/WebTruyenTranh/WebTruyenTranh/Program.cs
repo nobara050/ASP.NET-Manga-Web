@@ -9,15 +9,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration["ConnectionStrings:ConnectedDB"]);
 });
 
-//builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-//    .AddEntityFrameworkStores<ApplicationDbContext>() 
-//    .AddDefaultTokenProviders();
-
-//builder.Services.ConfigureApplicationCookie(options =>
-//{
-//    options.LoginPath = "/Admin/User/Login";
-//    options.AccessDeniedPath = "/Admin/User/Login";
-//});
+builder.Services.AddAuthentication("MyCookieAuth")
+    .AddCookie("MyCookieAuth", options =>
+    {
+        options.LoginPath = "/Admin/Account/Login";
+        options.AccessDeniedPath = "/Admin/Account/Login";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(300);
+        options.SlidingExpiration = true;
+    });
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -39,6 +38,10 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "Areas",
     pattern: "{area}/{controller=Manga}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "Admin",
+    pattern: "Admin/{controller=Account}/{action=Login}/{id?}");
 
 app.MapControllerRoute(
     name: "default",

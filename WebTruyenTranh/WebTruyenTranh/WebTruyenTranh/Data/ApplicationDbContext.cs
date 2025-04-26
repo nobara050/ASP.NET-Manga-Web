@@ -15,7 +15,7 @@ namespace WebTruyenTranh.Data
         public DbSet<AuthorModel> Authors { get; set; }
         public DbSet<GenreModel> Genres { get; set; }
         public DbSet<MangaModel> Mangas { get; set; }
-        public DbSet<AccountModel> Users { get; set; }
+        public DbSet<AccountModel> Account { get; set; }
 
 
 

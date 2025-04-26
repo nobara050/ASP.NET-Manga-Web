@@ -71,4 +71,4 @@ CREATE TABLE Account (
 );
 
 INSERT INTO Users (Username, Email, Password, Role)
-VALUES ('admin', 'nguyentiendat050@gmail.com', 'admin', 'admin');
+VALUES ('admin', 'nguyentiendat050@gmail.com', 'admin', 'Admin');

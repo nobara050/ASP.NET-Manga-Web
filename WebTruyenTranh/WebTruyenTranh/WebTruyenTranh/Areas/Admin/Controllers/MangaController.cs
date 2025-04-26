@@ -4,9 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using WebTruyenTranh.Models;
 using WebTruyenTranh.Models.ViewModel;
 using WebTruyenTranh.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebTruyenTranh.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class MangaController : Controller
     {

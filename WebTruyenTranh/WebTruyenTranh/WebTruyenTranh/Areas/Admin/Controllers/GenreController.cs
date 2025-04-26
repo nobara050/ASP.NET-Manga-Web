@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebTruyenTranh.Models;
 using WebTruyenTranh.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebTruyenTranh.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class GenreController : Controller
     {

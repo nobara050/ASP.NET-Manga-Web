@@ -1,20 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using WebTruyenTranh.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebTruyenTranh.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [AllowAnonymous] // Cho phép chưa đăng nhập truy cập vào AccountController
     public class AccountController : Controller
     {
-        //private readonly SignInManager<IdentityUser> _signInManager;
-        //private readonly UserManager<IdentityUser> _userManager;
-        //public UserController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
-        //{
-        //    _signInManager = signInManager;
-        //    _userManager = userManager;
-        //}
-
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly ApplicationDbContext _context;
 
@@ -24,38 +19,57 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Login(string returnUrl = null)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Login(string username, string password, string returnUrl = null)
+        {
+            var user = _context.Account
+                        .FirstOrDefault(x => x.Username != null && x.Password != null && x.Username == username && x.Password == password);
 
-        //public IActionResult Login()
-        //{
-        //    return View();
-        //}
+            if (user != null)
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, user.Username),
+                    new Claim(ClaimTypes.Role, user.Role) // chú ý role đúng theo db
+                };
 
-        //// Đăng nhập
-        //[HttpPost]
-        //public async Task<IActionResult> Login(string username, string password)
-        //{
-        //    var user = await _userManager.FindByNameAsync(username);
-        //    if (user != null)
-        //    {
-        //        var result = await _signInManager.PasswordSignInAsync(user, password, isPersistent: false, lockoutOnFailure: false);
-        //        if (result.Succeeded)
-        //        {
-        //            // Redirect to Admin area if user is in role "admin"
-        //            if (await _userManager.IsInRoleAsync(user, "admin"))
-        //                return RedirectToAction("Index", "Manga", new { area = "Admin" });
-        //            else
-        //                return RedirectToAction("Index", "Home");
-        //        }
-        //    }
+                var claimsIdentity = new ClaimsIdentity(claims, "MyCookieAuth");
 
-        //    ModelState.AddModelError("", "Invalid login attempt");
-        //    return View();
-        //}
+                var authProperties = new AuthenticationProperties
+                {
+                    IsPersistent = true,
+                    ExpiresUtc = DateTime.UtcNow.AddMinutes(300)
+                };
 
+                await HttpContext.SignInAsync("MyCookieAuth", new ClaimsPrincipal(claimsIdentity), authProperties);
+
+                if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                {
+                    return LocalRedirect(returnUrl);
+                }
+
+                if (user.Role == "Admin")
+                    return RedirectToAction("Index", "Manga", new { area = "Admin" });
+                else
+                    return RedirectToAction("Index", "Home", new { area = "" });
+            }
+
+            ViewBag.Error = "Sai tài khoản hoặc mật khẩu.";
+            return View();
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync("MyCookieAuth");
+            return RedirectToAction("Login", "Account", new { area = "Admin" });
+        }
     }
 }

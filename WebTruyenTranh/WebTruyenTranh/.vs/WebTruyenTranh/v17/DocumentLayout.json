@@ -3,8 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FD0233B6-B03D-48FC-ABBD-BD4EB798D752}|WebTruyenTranh\\WebTruyenTranh.csproj|c:\\users\\nguye\\downloads\\vscode-main\\webtruyentranh\\webtruyentranh\\webtruyentranh\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FD0233B6-B03D-48FC-ABBD-BD4EB798D752}|WebTruyenTranh\\WebTruyenTranh.csproj|solutionrelative:webtruyentranh\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{FD0233B6-B03D-48FC-ABBD-BD4EB798D752}|WebTruyenTranh\\WebTruyenTranh.csproj|c:\\users\\nguye\\downloads\\vscode-main\\webtruyentranh\\webtruyentranh\\webtruyentranh\\areas\\admin\\views\\genre\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FD0233B6-B03D-48FC-ABBD-BD4EB798D752}|WebTruyenTranh\\WebTruyenTranh.csproj|solutionrelative:webtruyentranh\\areas\\admin\\views\\genre\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD0233B6-B03D-48FC-ABBD-BD4EB798D752}|WebTruyenTranh\\WebTruyenTranh.csproj|c:\\users\\nguye\\downloads\\vscode-main\\webtruyentranh\\webtruyentranh\\webtruyentranh\\areas\\admin\\views\\author\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FD0233B6-B03D-48FC-ABBD-BD4EB798D752}|WebTruyenTranh\\WebTruyenTranh.csproj|solutionrelative:webtruyentranh\\areas\\admin\\views\\author\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD0233B6-B03D-48FC-ABBD-BD4EB798D752}|WebTruyenTranh\\WebTruyenTranh.csproj|c:\\users\\nguye\\downloads\\vscode-main\\webtruyentranh\\webtruyentranh\\webtruyentranh\\areas\\admin\\controllers\\mangacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD0233B6-B03D-48FC-ABBD-BD4EB798D752}|WebTruyenTranh\\WebTruyenTranh.csproj|solutionrelative:webtruyentranh\\areas\\admin\\controllers\\mangacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD0233B6-B03D-48FC-ABBD-BD4EB798D752}|WebTruyenTranh\\WebTruyenTranh.csproj|c:\\users\\nguye\\downloads\\vscode-main\\webtruyentranh\\webtruyentranh\\webtruyentranh\\areas\\admin\\controllers\\genrecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD0233B6-B03D-48FC-ABBD-BD4EB798D752}|WebTruyenTranh\\WebTruyenTranh.csproj|solutionrelative:webtruyentranh\\areas\\admin\\controllers\\genrecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD0233B6-B03D-48FC-ABBD-BD4EB798D752}|WebTruyenTranh\\WebTruyenTranh.csproj|c:\\users\\nguye\\downloads\\vscode-main\\webtruyentranh\\webtruyentranh\\webtruyentranh\\areas\\admin\\controllers\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD0233B6-B03D-48FC-ABBD-BD4EB798D752}|WebTruyenTranh\\WebTruyenTranh.csproj|solutionrelative:webtruyentranh\\areas\\admin\\controllers\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,15 +35,65 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "WebTruyenTranh\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "WebTruyenTranh\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAI0AAAAAAAAAAAAAAKQAAAAAAAAAAAAAAA==",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\Areas\\Admin\\Views\\Genre\\Index.cshtml",
+              "RelativeDocumentMoniker": "WebTruyenTranh\\Areas\\Admin\\Views\\Genre\\Index.cshtml",
+              "ToolTip": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\Areas\\Admin\\Views\\Genre\\Index.cshtml",
+              "RelativeToolTip": "WebTruyenTranh\\Areas\\Admin\\Views\\Genre\\Index.cshtml",
+              "ViewState": "AgIAACgAAAAAAAAAAAAwwEIAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-26T14:31:50.669Z",
+              "WhenOpened": "2025-04-26T16:29:22.953Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\Areas\\Admin\\Views\\Author\\Index.cshtml",
+              "RelativeDocumentMoniker": "WebTruyenTranh\\Areas\\Admin\\Views\\Author\\Index.cshtml",
+              "ToolTip": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\Areas\\Admin\\Views\\Author\\Index.cshtml",
+              "RelativeToolTip": "WebTruyenTranh\\Areas\\Admin\\Views\\Author\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-26T16:28:35.301Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MangaController.cs",
+              "DocumentMoniker": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\Areas\\Admin\\Controllers\\MangaController.cs",
+              "RelativeDocumentMoniker": "WebTruyenTranh\\Areas\\Admin\\Controllers\\MangaController.cs",
+              "ToolTip": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\Areas\\Admin\\Controllers\\MangaController.cs",
+              "RelativeToolTip": "WebTruyenTranh\\Areas\\Admin\\Controllers\\MangaController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T16:25:45.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GenreController.cs",
+              "DocumentMoniker": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\Areas\\Admin\\Controllers\\GenreController.cs",
+              "RelativeDocumentMoniker": "WebTruyenTranh\\Areas\\Admin\\Controllers\\GenreController.cs",
+              "ToolTip": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\Areas\\Admin\\Controllers\\GenreController.cs",
+              "RelativeToolTip": "WebTruyenTranh\\Areas\\Admin\\Controllers\\GenreController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T16:25:44.302Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthorController.cs",
+              "DocumentMoniker": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\Areas\\Admin\\Controllers\\AuthorController.cs",
+              "RelativeDocumentMoniker": "WebTruyenTranh\\Areas\\Admin\\Controllers\\AuthorController.cs",
+              "ToolTip": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\Areas\\Admin\\Controllers\\AuthorController.cs",
+              "RelativeToolTip": "WebTruyenTranh\\Areas\\Admin\\Controllers\\AuthorController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T16:25:43.252Z"
             }
           ]
         }

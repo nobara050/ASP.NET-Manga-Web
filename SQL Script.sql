@@ -59,8 +59,8 @@ CREATE TABLE Bridge_Manga_Author (
     PRIMARY KEY (MangaId, AuthorId)
 );
  
-CREATE TABLE Users (
-    UserId INT IDENTITY(1,1) PRIMARY KEY,
+CREATE TABLE Account (
+    AccountId INT IDENTITY(1,1) PRIMARY KEY,
     Username NVARCHAR(255) NOT NULL,
     Email NVARCHAR(255) NOT NULL,
     Password NVARCHAR(255) NOT NULL,

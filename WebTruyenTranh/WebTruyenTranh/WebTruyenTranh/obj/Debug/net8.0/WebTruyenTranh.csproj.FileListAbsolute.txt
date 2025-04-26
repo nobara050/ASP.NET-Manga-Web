@@ -278,3 +278,4 @@ C:\Users\nguye\Downloads\VSCode-main\WebTruyenTranh\WebTruyenTranh\WebTruyenTran
 C:\Users\nguye\Downloads\VSCode-main\WebTruyenTranh\WebTruyenTranh\WebTruyenTranh\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\nguye\Downloads\VSCode-main\WebTruyenTranh\WebTruyenTranh\WebTruyenTranh\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\nguye\Downloads\VSCode-main\WebTruyenTranh\WebTruyenTranh\WebTruyenTranh\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\nguye\Downloads\VSCode-main\WebTruyenTranh\WebTruyenTranh\WebTruyenTranh\obj\Debug\net8.0\WebTruyenTranh.sourcelink.json

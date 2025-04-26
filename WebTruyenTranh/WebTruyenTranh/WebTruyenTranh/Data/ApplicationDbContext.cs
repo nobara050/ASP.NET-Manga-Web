@@ -15,6 +15,7 @@ namespace WebTruyenTranh.Data
         public DbSet<AuthorModel> Authors { get; set; }
         public DbSet<GenreModel> Genres { get; set; }
         public DbSet<MangaModel> Mangas { get; set; }
+        public DbSet<AccountModel> Users { get; set; }
 
 
 
@@ -24,6 +25,7 @@ namespace WebTruyenTranh.Data
             modelBuilder.Entity<AuthorModel>().ToTable("Author");
             modelBuilder.Entity<GenreModel>().ToTable("Genre");
             modelBuilder.Entity<MangaModel>().ToTable("Manga");
+            modelBuilder.Entity<AccountModel>().ToTable("Account");
             modelBuilder.Entity<Bridge_Manga_AuthorModel>()
             .HasKey(x => new { x.MangaId, x.AuthorId });
             modelBuilder.Entity<Bridge_Manga_GenreModel>()

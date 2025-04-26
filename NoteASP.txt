@@ -1,4 +1,4 @@
-- Quản lý người dùng User: (UserId, Username, Email, Password phải mã hóa trước khi lưu vào, Avatar, Role, Balance, CreatedAt) Duy Bùi
+- Quản lý người dùng Account: (AccountId, Username, Email, Password phải mã hóa trước khi lưu vào, Avatar, Role, Balance, CreatedAt) Duy Bùi
 - Quản lý truyện=> Bấm vào để quản lý Chapter (Giống quản lý hóa đơn => chi tiết hóa đơn): 
 	Manga (MangaId, Title, Description, CoverImage, BackgroundImage, Status, UserId,  CreatedAt) 
 	Chapter (ChapterId, MangaId, Title, Price, CreatedAt)

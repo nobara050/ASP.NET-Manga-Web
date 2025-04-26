@@ -9,7 +9,11 @@
 
 <a class="btn btn-dark shadow-sm" asp-action="Create">Thêm thể loại</a>
 
-<table class="table table-bordered table-hover">
+<form id="deleteForm">
+    @Html.AntiForgeryToken()
+</form>
+
+<table class="table table-bordered table-striped">
     <thead class="table-dark">
         <tr>
             <th>ID</th>
@@ -58,28 +62,40 @@
 </div>
 
 @section Scripts {
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         let selectedId = 0;
+        let deleteModal; // Biến modal toàn cục
 
-        $(document).ready(function () {
+                $(document).ready(function () {
+            // Khởi tạo modal chỉ 1 lần duy nhất
+            deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+
+            // Xử lý sự kiện nút xóa
             $('.btn-delete').on('click', function () {
                 selectedId = $(this).data('id');
                 const name = $(this).data('name');
                 $('#genreName').text(name);
+                deleteModal.show();
+            });
 
-                const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
-                modal.show();
+            // Thêm xử lý rõ ràng cho nút hủy
+            $('.btn-secondary, .btn-close').on('click', function() {
+                deleteModal.hide();
             });
 
             $('#confirmDeleteBtn').on('click', function () {
                 $.ajax({
                     url: '/Admin/Genre/DeleteConfirmed/' + selectedId,
                     type: 'POST',
+                    headers: {
+                        'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                    },
                     success: function () {
                         $('#genre-row-' + selectedId).fadeOut();
-                        const modal = bootstrap.Modal.getInstance(document.getElementById('deleteModal'));
-                        modal.hide();
+                        deleteModal.hide();
+                        setTimeout(function () {
+                            alert('Xóa thành công!');
+                        }, 300);
                     },
                     error: function () {
                         alert('Xóa thất bại!');
@@ -89,3 +105,9 @@
         });
     </script>
 }
+
+
+
+
+
+

@@ -9,23 +9,33 @@
 
 <a class="btn btn-dark shadow-sm" asp-action="Create">Thêm tác giả</a>
 
+<form id="deleteForm">
+    @Html.AntiForgeryToken()
+</form>
+
 <table class="table table-bordered table-striped">
     <thead class="table-dark">
         <tr>
             <th>ID</th>
             <th>Tên Tác Giả</th>
-            <th>Hành động</th>
+            <th style="width: 180px;">Hành động</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var author in Model)
         {
-            <tr id="row-@author.AuthorId">
+            <tr id="author-row-@author.AuthorId">
                 <td>@author.AuthorId</td>
                 <td>@author.Name</td>
                 <td>
-                    <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@author.AuthorId">Sửa</a>
-                    <button class="btn btn-danger btn-sm" onclick="showDeleteModal(@author.AuthorId)">Xóa</button>
+                    <a class="btn btn-sm btn-warning me-1" asp-action="Edit" asp-route-id="@author.AuthorId">
+                        <i class="bi bi-pencil-square"></i> Sửa
+                    </a>
+                    <button type="button" class="btn btn-sm btn-danger btn-delete"
+                            data-id="@author.AuthorId"
+                            data-name="@author.Name">
+                        <i class="bi bi-trash"></i> Xóa
+                    </button>
                 </td>
             </tr>
         }
@@ -33,15 +43,15 @@
 </table>
 
 <!-- Modal xác nhận xóa -->
-<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteConfirmLabel">Xác nhận xóa</h5>
-                <button type="button" class="btn-close border-0 rounded" data-bs-dismiss="modal">&times;</button>
+            <div class="modal-header ">
+                <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Đóng"></button>
             </div>
             <div class="modal-body">
-                Bạn có chắc chắn muốn xóa tác giả này không?
+                Bạn có chắc chắn muốn xóa tác giả <strong id="genreName"></strong>?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
@@ -54,28 +64,44 @@
 @section Scripts {
     <script>
         let selectedId = 0;
+        let deleteModal; // Biến modal toàn cục
 
-        function showDeleteModal(id) {
-            selectedId = id;
-            var modal = new bootstrap.Modal(document.getElementById('deleteConfirmModal'));
-            modal.show();
-        }
+                $(document).ready(function () {
+            // Khởi tạo modal chỉ 1 lần duy nhất
+            deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
 
-        $('#confirmDeleteBtn').click(function () {
-            $.ajax({
-                url: '/Admin/Author/DeleteConfirmed/' + selectedId,
-                type: 'POST',
-                success: function () {
-                    let modalElement = document.getElementById('deleteConfirmModal');
-                    let modalInstance = bootstrap.Modal.getInstance(modalElement);
-                    modalInstance.hide();
-                    $('#row-' + selectedId).fadeOut();
-                },
-                error: function () {
-                    alert('Đã có lỗi xảy ra khi xóa tác giả.');
-                }
+            // Xử lý sự kiện nút xóa
+            $('.btn-delete').on('click', function () {
+                selectedId = $(this).data('id');
+                const name = $(this).data('name');
+                $('#authorName').text(name);
+                deleteModal.show();
+            });
+
+            // Thêm xử lý rõ ràng cho nút hủy
+            $('.btn-secondary, .btn-close').on('click', function() {
+                deleteModal.hide();
+            });
+
+            $('#confirmDeleteBtn').on('click', function () {
+                $.ajax({
+                    url: '/Admin/Author/DeleteConfirmed/' + selectedId,
+                    type: 'POST',
+                    headers: {
+                        'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    success: function () {
+                        $('#author-row-' + selectedId).fadeOut();
+                        deleteModal.hide();
+                        setTimeout(function () {
+                            alert('Xóa thành công!');
+                        }, 300);
+                    },
+                    error: function () {
+                        alert('Xóa thất bại!');
+                    }
+                });
             });
         });
-
     </script>
 }

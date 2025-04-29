@@ -48,10 +48,9 @@
         <div class="modal-content">
             <div class="modal-header ">
                 <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Đóng"></button>
             </div>
             <div class="modal-body">
-                Bạn có chắc chắn muốn xóa tác giả <strong id="genreName"></strong>?
+                Bạn có chắc chắn muốn xóa tác giả ?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
@@ -66,7 +65,7 @@
         let selectedId = 0;
         let deleteModal; // Biến modal toàn cục
 
-                $(document).ready(function () {
+        $(document).ready(function () {
             // Khởi tạo modal chỉ 1 lần duy nhất
             deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
 
@@ -93,9 +92,6 @@
                     success: function () {
                         $('#author-row-' + selectedId).fadeOut();
                         deleteModal.hide();
-                        setTimeout(function () {
-                            alert('Xóa thành công!');
-                        }, 300);
                     },
                     error: function () {
                         alert('Xóa thất bại!');

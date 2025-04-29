@@ -4542,7 +4542,7 @@ wwwroot\admin\assets\vendors\validator\package.json
 wwwroot\admin\assets\vendors\validator\README.md
 wwwroot\admin\assets\vendors\validator\validator.js
 wwwroot\admin\css\Manga\Index.css
-wwwroot\favicon.ico
+wwwroot\admin\img\admin_favicon.png
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
@@ -4601,4 +4601,7 @@ wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
 wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
 wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
 wwwroot\uploads\049b3e11-2bc9-4e46-9909-ff204526218e_mangacover.png
+wwwroot\uploads\8007ae97-2509-4959-b735-fbfdc483368b_1.jpg
+wwwroot\uploads\9f0e2d80-f050-4c3e-ad79-b289046a9f6f_1.jpg
 wwwroot\uploads\d716c8ac-5f5d-4e1b-889a-d38dcd19212b_img1.jpg
+wwwroot\uploads\d88f5275-bef7-43f1-98b6-452f3b2c1df2_1.jpg

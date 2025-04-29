@@ -5,8 +5,6 @@
     ViewData["Title"] = "Thêm Truyện";
 }
 
-<h2 class="text-center">Thêm Truyện Mới</h2>
-
 <style>
     .image-preview {
     width: 100%; /* Đảm bảo ảnh luôn responsive */
@@ -25,6 +23,9 @@
 </style>
 
 <div class="container p-4">
+    <div class="w-100 d-flex justify-content-center align-items-center">
+        <h2 class="text-primary">Thêm truyện</h2>
+    </div>
     <form asp-area="Admin" asp-controller="Manga" asp-action="Create" method="post" enctype="multipart/form-data">
         <!-- Tiêu đề -->
         <div class="mb-3">

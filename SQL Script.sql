@@ -25,16 +25,17 @@ CREATE TABLE Chapter (
 	ChapterId INT IDENTITY(1,1) PRIMARY KEY,
     MangaId INT,
     Title NVARCHAR(255) NOT NULL,
-    Price DECIMAL(10,2) DEFAULT 0,
+	Alias NVARCHAR(255),
+    Price DECIMAL(10,2) DEFAULT 0 NOT NULL,
     CreatedAt DATETIME DEFAULT GETDATE()
 );
 
 CREATE TABLE Content (
 	ContentId INT IDENTITY(1,1) PRIMARY KEY,
-    MangaId INT,
-    ChapterId INT,
-	ContentNum INT,
-    Image NVARCHAR(1000)
+    MangaId INT NOT NULL,
+    ChapterId INT NOT NULL,
+	ContentNum INT NOT NULL,
+    Image NVARCHAR(1000) NOT NULL
 );
 
 CREATE TABLE Genre (
@@ -70,5 +71,7 @@ CREATE TABLE Account (
     CreatedAt DATETIME2 NOT NULL DEFAULT GETDATE()
 );
 
-INSERT INTO Users (Username, Email, Password, Role)
+INSERT INTO Account (Username, Email, Password, Role)
 VALUES ('admin', 'nguyentiendat050@gmail.com', 'admin', 'Admin');
+
+SELECT * FROM Account; 

@@ -1,4 +1,4 @@
-﻿﻿@using WebTruyenTranh.Models
+﻿﻿﻿@using WebTruyenTranh.Models
 @model List<GenreModel>
 
 @{
@@ -48,7 +48,6 @@
         <div class="modal-content">
             <div class="modal-header ">
                 <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Đóng"></button>
             </div>
             <div class="modal-body">
                 Bạn có chắc chắn muốn xóa thể loại <strong id="genreName"></strong>?
@@ -93,9 +92,6 @@
                     success: function () {
                         $('#genre-row-' + selectedId).fadeOut();
                         deleteModal.hide();
-                        setTimeout(function () {
-                            alert('Xóa thành công!');
-                        }, 300);
                     },
                     error: function () {
                         alert('Xóa thất bại!');

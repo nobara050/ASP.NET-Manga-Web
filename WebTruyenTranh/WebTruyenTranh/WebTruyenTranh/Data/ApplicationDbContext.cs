@@ -12,10 +12,12 @@ namespace WebTruyenTranh.Data
         // Khai báo các DbSet tương ứng với các bảng trong cơ sở dữ liệu
         public DbSet<Bridge_Manga_GenreModel> Bridge_Manga_Genre { get; set; }
         public DbSet<Bridge_Manga_AuthorModel> Bridge_Manga_Author { get; set; }
-        public DbSet<AuthorModel> Authors { get; set; }
-        public DbSet<GenreModel> Genres { get; set; }
-        public DbSet<MangaModel> Mangas { get; set; }
+        public DbSet<AuthorModel> Author { get; set; }
+        public DbSet<GenreModel> Genre { get; set; }
+        public DbSet<MangaModel> Manga { get; set; }
         public DbSet<AccountModel> Account { get; set; }
+        public DbSet<ChapterModel> Chapter { get; set; }
+        public DbSet<ContentModel> Content { get; set; }
 
 
 
@@ -26,6 +28,8 @@ namespace WebTruyenTranh.Data
             modelBuilder.Entity<GenreModel>().ToTable("Genre");
             modelBuilder.Entity<MangaModel>().ToTable("Manga");
             modelBuilder.Entity<AccountModel>().ToTable("Account");
+            modelBuilder.Entity<ChapterModel>().ToTable("Chapter");
+            modelBuilder.Entity<ContentModel>().ToTable("Content");
             modelBuilder.Entity<Bridge_Manga_AuthorModel>()
             .HasKey(x => new { x.MangaId, x.AuthorId });
             modelBuilder.Entity<Bridge_Manga_GenreModel>()

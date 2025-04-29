@@ -52,6 +52,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuZ2FcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/nguye/Downloads/VSCode-main/WebTruyenTranh/WebTruyenTranh/WebTruyenTranh/Areas/Admin/Views/Manga/CreateChapter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuZ2FcQ3JlYXRlQ2hhcHRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/nguye/Downloads/VSCode-main/WebTruyenTranh/WebTruyenTranh/WebTruyenTranh/Areas/Admin/Views/Manga/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuZ2FcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -60,8 +64,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuZ2FcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/nguye/Downloads/VSCode-main/WebTruyenTranh/WebTruyenTranh/WebTruyenTranh/Areas/Admin/Views/Manga/NotFound.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuZ2FcTm90Rm91bmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nguye/Downloads/VSCode-main/WebTruyenTranh/WebTruyenTranh/WebTruyenTranh/Areas/Admin/Views/Manga/UpdateChapter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuZ2FcVXBkYXRlQ2hhcHRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nguye/Downloads/VSCode-main/WebTruyenTranh/WebTruyenTranh/WebTruyenTranh/Areas/Admin/Views/Manga/Upload.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuZ2FcVXBsb2FkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/nguye/Downloads/VSCode-main/WebTruyenTranh/WebTruyenTranh/WebTruyenTranh/Areas/Admin/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nguye/Downloads/VSCode-main/WebTruyenTranh/WebTruyenTranh/WebTruyenTranh/Areas/Admin/Views/Shared/_ConfirmDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9Db25maXJtRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/nguye/Downloads/VSCode-main/WebTruyenTranh/WebTruyenTranh/WebTruyenTranh/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]

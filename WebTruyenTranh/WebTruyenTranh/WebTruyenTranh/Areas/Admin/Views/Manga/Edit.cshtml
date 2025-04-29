@@ -5,8 +5,6 @@
     ViewData["Title"] = "Sửa Truyện";
 }
 
-<h2 class="text-center">Sửa Thông Tin Truyện</h2>
-
 <style>
     .image-preview {
     width: 100%; /* Đảm bảo ảnh luôn responsive */
@@ -27,7 +25,10 @@
 </style>
 
 <div class="container p-4">
-    <form asp-action="EditDo" method="post" enctype="multipart/form-data">
+    <div class="w-100 d-flex justify-content-center align-items-center">
+        <h2 class="text-primary">Sửa thông tin truyện</h2>
+    </div>
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
         <input type="hidden" asp-for="MangaModel.MangaId" />
 
         <!-- Tiêu đề -->

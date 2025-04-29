@@ -19,7 +19,7 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         // Hiển thị danh sách
         public IActionResult Index()
         {
-            var genres = _context.Genres.ToList();
+            var genres = _context.Genre.ToList();
             return View(genres);
         }
 
@@ -34,7 +34,7 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Genres.Add(genre);
+                _context.Genre.Add(genre);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -44,7 +44,7 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         // Chỉnh sửa
         public IActionResult Edit(int id)
         {
-            var genre = _context.Genres.Find(id);
+            var genre = _context.Genre.Find(id);
             if (genre == null) return NotFound();
             return View(genre);
         }
@@ -54,7 +54,7 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Genres.Update(genre);
+                _context.Genre.Update(genre);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -64,7 +64,7 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         // Xóa 
         public IActionResult Delete(int id)
         {
-            var genre = _context.Genres.Find(id);
+            var genre = _context.Genre.Find(id);
             if (genre == null) return NotFound();
             return View(genre);
         }
@@ -72,11 +72,11 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult DeleteConfirmed(int id)
         {
-            var genre = _context.Genres.Find(id);
+            var genre = _context.Genre.Find(id);
             if (genre == null)
                 return NotFound();
 
-            _context.Genres.Remove(genre);
+            _context.Genre.Remove(genre);
             _context.SaveChanges();
 
             return Ok();

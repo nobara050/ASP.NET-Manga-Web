@@ -1,0 +1,107 @@
+﻿@using WebTruyenTranh.Models.ViewModel
+@model MangaChapterContentViewModel
+
+@{
+    ViewData["Title"] = "Create Chapter";
+}
+
+<h2>Thêm chương mới cho truyện @Model.MangaModel.Title</h2>
+<form asp-action="CreateChapter" asp-controller="Manga" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="MangaId" value="@Model.MangaModel.MangaId" />
+
+    <div class="form-group">
+        <label for="Title">Chương: (Ví dụ Chương 1, Chương 2,...)</label>
+        <input type="text" class="form-control" name="Title" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Alias">Tên Chương:</label>
+        <input type="text" class="form-control" name="Alias" />
+    </div>
+
+    <div class="form-group d-flex align-items-center">
+        <div class="d-flex align-items-center">
+            <span>Chapter này có tính phí không? (Nếu chọn có, hãy chắc chắn bạn có quyền sở hữu truyện, chúng tôi không giải quyết vấn đề bản quyền)</span>
+        </div>
+        <input class="m-1" type="checkbox" id="isPaidToggle" />
+        <input type="hidden" id="IsPaid" name="IsPaid" value="false" />
+    </div>
+
+    <div class="form-group" id="priceGroup" style="display:none;">
+        <label for="Price">Nhập giá:</label>
+        <input type="number" class="form-control" name="Price" min="0" value="0" />
+    </div>
+
+    <div class="form-group">
+        <label for="Files">Chọn ảnh load truyện. Ảnh sắp xếp theo thứ tự tên của ảnh (ví dụ 1.jpg, 2.jpg,...)</label>
+        <input type="file" id="Files" name="Files" multiple accept="image/*" required />
+    </div>
+
+    <div class="p-2 d-flex flex-column justify-content-center align-items-center" id="previewContainer">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Thêm Chương</button>
+</form>
+
+@section Scripts {
+    <script>
+        const toggle = document.getElementById('isPaidToggle');
+        const priceGroup = document.getElementById('priceGroup');
+        const isPaidInput = document.getElementById('IsPaid');
+
+        toggle.addEventListener('change', function () {
+            if (this.checked) {
+                priceGroup.style.display = 'block';
+                isPaidInput.value = 'true';
+            } else {
+                priceGroup.style.display = 'none';
+                isPaidInput.value = 'false';
+                document.querySelector('input[name="Price"]').value = 0;
+            }
+        });
+
+        const filesInput = document.getElementById('Files');
+        const previewContainer = document.getElementById('previewContainer');
+
+        filesInput.addEventListener('change', async function () {
+            previewContainer.innerHTML = '';
+            let files = Array.from(this.files);
+
+            // Sắp xếp theo tên số học (1.jpg, 2.jpg,...)
+            files.sort((a, b) => {
+                const getNumber = file => {
+                    const match = file.name.match(/\d+/);
+                    return match ? parseInt(match[0], 10) : 0;
+                };
+                return getNumber(a) - getNumber(b);
+            });
+
+            // Đọc file theo thứ tự, chờ load xong ảnh trước khi tiếp ảnh sau
+            for (const file of files) {
+                if (file.type.startsWith('image/')) {
+                    const img = document.createElement('img');
+                    img.className = 'img-fluid mb-3';
+                    img.style.maxWidth = '1200px';
+                    img.style.height = 'auto';
+                    img.src = await readFileAsDataURL(file);
+                    previewContainer.appendChild(img);
+                }
+            }
+
+            // Hàm đọc file theo kiểu Promise
+            function readFileAsDataURL(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = e => resolve(e.target.result);
+                    reader.onerror = e => reject(e);
+                    reader.readAsDataURL(file);
+                });
+            }
+        });
+
+    </script>
+}
+
+
+
+

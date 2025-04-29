@@ -1,0 +1,114 @@
+﻿@using WebTruyenTranh.Models.ViewModel
+@model MangaChapterContentViewModel
+
+@{
+    ViewData["Title"] = "Update Chapter";
+}
+
+<h2>Cập nhật chương cho truyện @Model.MangaModel.Title</h2>
+
+<form asp-action="UpdateChapter" asp-controller="Manga" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="MangaId" value="@Model.MangaModel.MangaId" />
+    <input type="hidden" name="ChapterId" value="@Model.ChapterModels.FirstOrDefault()?.ChapterId" />
+
+    <div class="form-group">
+        <label for="Title">Chương: (Ví dụ Chương 1, Chương 2,...)</label>
+        <input type="text" class="form-control" name="Title" value="@Model.ChapterModels.FirstOrDefault()?.Title" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Alias">Tên Chương:</label>
+        <input type="text" class="form-control" name="Alias" value="@Model.ChapterModels.FirstOrDefault()?.Alias" />
+    </div>
+
+    <div class="form-group d-flex align-items-center">
+        <div class="d-flex align-items-center">
+            <span>Chapter này có tính phí không? (Nếu chọn có, hãy chắc chắn bạn có quyền sở hữu truyện, chúng tôi không giải quyết vấn đề bản quyền)</span>
+        </div>
+        <input class="m-1" type="checkbox" id="isPaidToggle" @(Model.ChapterModels.FirstOrDefault()?.Price > 0 ? "checked" : "") />
+        <input type="hidden" id="IsPaid" name="IsPaid" value="@(Model.ChapterModels.FirstOrDefault()?.Price > 0 ? "true" : "false")" />
+    </div>
+
+    <div class="form-group" id="priceGroup" style="display:@(Model.ChapterModels.FirstOrDefault()?.Price > 0 ? "block" : "none");">
+        <label for="Price">Nhập giá:</label>
+        <input type="number" class="form-control" name="Price" min="0"
+               value="@(Model.ChapterModels.FirstOrDefault()?.Price.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "0")" />
+
+    </div>
+
+    <div class="form-group">
+        <label for="Files">Chọn ảnh mới nếu muốn cập nhật lại ảnh (ảnh mới sẽ thay thế hoàn toàn ảnh cũ):</label>
+        <input type="file" id="Files" name="Files" multiple accept="image/*" />
+    </div>
+
+    <div class="p-2 d-flex flex-column justify-content-center align-items-center" id="previewContainer">
+        @foreach (var content in Model.ContentModels.OrderBy(c => c.ContentNum))
+        {
+            <img src="~/@content.Image" class="img-fluid mb-3" style="max-width: 1200px; height: auto;" />
+        }
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cập nhật Chương</button>
+</form>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggle = document.getElementById('isPaidToggle');
+            const priceGroup = document.getElementById('priceGroup');
+            const isPaidInput = document.getElementById('IsPaid');
+
+            toggle.addEventListener('change', function () {
+                if (this.checked) {
+                    priceGroup.style.display = 'block';
+                    isPaidInput.value = 'true';
+                } else {
+                    priceGroup.style.display = 'none';
+                    isPaidInput.value = 'false';
+                    document.querySelector('input[name="Price"]').value = 0;
+                }
+            });
+
+            // Trigger sự kiện change nếu checkbox đang được tick khi load
+            toggle.dispatchEvent(new Event('change'));
+        });
+
+        const filesInput = document.getElementById('Files');
+        const previewContainer = document.getElementById('previewContainer');
+        filesInput.addEventListener('change', async function () {
+            previewContainer.innerHTML = ''; // Xóa ảnh cũ khi có ảnh mới
+            let files = Array.from(this.files);
+
+            // Sắp xếp theo tên số học (1.jpg, 2.jpg,...)
+            files.sort((a, b) => {
+                const getNumber = file => {
+                    const match = file.name.match(/\d+/);
+                    return match ? parseInt(match[0], 10) : 0;
+                };
+                return getNumber(a) - getNumber(b);
+            });
+
+            // Đọc từng ảnh một cách tuần tự để đảm bảo thứ tự
+            for (const file of files) {
+                if (file.type.startsWith('image/')) {
+                    const img = document.createElement('img');
+                    img.className = 'img-fluid mb-3';
+                    img.style.maxWidth = '1200px';
+                    img.style.height = 'auto';
+                    img.src = await readFileAsDataURL(file);
+                    previewContainer.appendChild(img);
+                }
+            }
+
+            function readFileAsDataURL(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = e => resolve(e.target.result);
+                    reader.onerror = e => reject(e);
+                    reader.readAsDataURL(file);
+                });
+            }
+        });
+
+    </script>
+}

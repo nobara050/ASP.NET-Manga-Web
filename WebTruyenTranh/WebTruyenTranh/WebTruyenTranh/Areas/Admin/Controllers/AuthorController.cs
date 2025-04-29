@@ -19,7 +19,7 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         // Hiển thị danh sách
         public IActionResult Index()
         {
-            var authors = _context.Authors.ToList();
+            var authors = _context.Author.ToList();
             return View(authors);
         }
 
@@ -34,7 +34,7 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Authors.Add(author);
+                _context.Author.Add(author);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
@@ -44,7 +44,7 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         // Chỉnh sửa
         public IActionResult Edit(int id)
         {
-            var author = _context.Authors.Find(id);
+            var author = _context.Author.Find(id);
             if (author == null) return NotFound();
             return View(author);
         }
@@ -54,7 +54,7 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Authors.Update(author);
+                _context.Author.Update(author);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
@@ -62,9 +62,10 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         }
 
         // Xóa
+
         public IActionResult Delete(int id)
         {
-            var author = _context.Authors.Find(id);
+            var author = _context.Author.Find(id);
             if (author == null) return NotFound();
             return View(author);
         }
@@ -72,15 +73,16 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult DeleteConfirmed(int id)
         {
-            var author = _context.Authors.Find(id);
+            var author = _context.Author.Find(id);
             if (author == null)
                 return NotFound();
 
-            _context.Authors.Remove(author);
+            _context.Author.Remove(author);
             _context.SaveChanges();
 
             return Ok(); // AJAX sẽ nhận kết quả này
         }
+
 
     }
 }

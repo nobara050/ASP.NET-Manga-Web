@@ -1,0 +1,53 @@
+﻿@using WebTruyenTranh.Models.ViewModel
+@model MangaChapterContentViewModel
+
+<div class="container">
+    <div class="w-100 d-flex justify-content-center align-items-center">
+        <h2 class="text-primary">Danh sách chương @Model.MangaModel.Title</h2>
+    </div>
+
+    <a asp-area="Admin"
+       asp-controller="Manga"
+       asp-action="CreateChapter"
+       asp-route-id="@Model.MangaModel.MangaId">
+        <button class="btn btn-info text-white">Thêm chương mới</button>
+    </a>
+    <div class="card shadow-sm" style="max-height: 500px; overflow-y: auto;">
+        <ul class="list-group list-group-flush">
+            <!-- Một chương -->
+            @foreach (var item in Model.ChapterModels)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                            <a asp-controller="Manga"
+                               asp-action="UpdateChapter"
+                               asp-route-mangaId="@Model.MangaModel.MangaId"
+                               asp-route-chapterId="@item.ChapterId"
+                               class="fw-bold text-decoration-none text-primary me-3">@item.Title @item.Alias</a>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <a asp-area="Admin"
+                            asp-controller="Manga"
+                            asp-action="UpdateChapter"
+                            asp-route-mangaId="@Model.MangaModel.MangaId"
+                            asp-route-chapterId="@item.ChapterId">
+                            <button class="btn btn-sm btn-primary me-1">Sửa</button>
+                        </a>
+                        <a asp-area="Admin"
+                            asp-controller="Manga"
+                            asp-action="DeleteChapter"
+                            asp-route-mangaId="@Model.MangaModel.MangaId"
+                            asp-route-chapterId="@item.ChapterId"
+                            class="confirm-delete"
+                            data-title="Xác nhận xóa chương"
+                            data-message="Bạn có chắc chắn muốn xóa chương này không?">
+                            <button class="btn btn-sm btn-danger">Xóa</button>
+                        </a>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+
+</div>
+

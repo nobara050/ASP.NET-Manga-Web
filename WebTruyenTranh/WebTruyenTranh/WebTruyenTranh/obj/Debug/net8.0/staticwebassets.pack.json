@@ -18181,8 +18181,8 @@
       "PackagePath": "staticwebassets\\admin\\css\\Manga\\Index.css"
     },
     {
-      "Id": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\wwwroot\\favicon.ico",
-      "PackagePath": "staticwebassets\\favicon.ico"
+      "Id": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\wwwroot\\admin\\img\\admin_favicon.png",
+      "PackagePath": "staticwebassets\\admin\\img\\admin_favicon.png"
     },
     {
       "Id": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\wwwroot\\lib\\bootstrap\\LICENSE",
@@ -18417,8 +18417,20 @@
       "PackagePath": "staticwebassets\\uploads\\049b3e11-2bc9-4e46-9909-ff204526218e_mangacover.png"
     },
     {
+      "Id": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\wwwroot\\uploads\\8007ae97-2509-4959-b735-fbfdc483368b_1.jpg",
+      "PackagePath": "staticwebassets\\uploads\\8007ae97-2509-4959-b735-fbfdc483368b_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\wwwroot\\uploads\\9f0e2d80-f050-4c3e-ad79-b289046a9f6f_1.jpg",
+      "PackagePath": "staticwebassets\\uploads\\9f0e2d80-f050-4c3e-ad79-b289046a9f6f_1.jpg"
+    },
+    {
       "Id": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\wwwroot\\uploads\\d716c8ac-5f5d-4e1b-889a-d38dcd19212b_img1.jpg",
       "PackagePath": "staticwebassets\\uploads\\d716c8ac-5f5d-4e1b-889a-d38dcd19212b_img1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\wwwroot\\uploads\\d88f5275-bef7-43f1-98b6-452f3b2c1df2_1.jpg",
+      "PackagePath": "staticwebassets\\uploads\\d88f5275-bef7-43f1-98b6-452f3b2c1df2_1.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.WebTruyenTranh.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

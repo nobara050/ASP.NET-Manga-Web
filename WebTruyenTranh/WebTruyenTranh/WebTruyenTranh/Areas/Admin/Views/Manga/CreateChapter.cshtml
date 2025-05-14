@@ -81,7 +81,7 @@
                 if (file.type.startsWith('image/')) {
                     const img = document.createElement('img');
                     img.className = 'img-fluid mb-3';
-                    img.style.maxWidth = '1200px';
+                    img.style.maxWidth = '900px';
                     img.style.height = 'auto';
                     img.src = await readFileAsDataURL(file);
                     previewContainer.appendChild(img);

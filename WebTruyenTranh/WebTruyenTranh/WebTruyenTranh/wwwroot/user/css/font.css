@@ -1,0 +1,110 @@
+
+.text-shadow-title {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    color: #b5e745;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+ 
+}
+.text-bg-custom {
+    background: rgba(255, 255, 255, 0.2); /* Màu nền trong suốt */
+    backdrop-filter: blur(5px); /* Hiệu ứng mờ nền */
+    border-radius: 10px; /* Bo góc */
+    padding: 10px 15px; /* Canh chỉnh padding */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Đổ bóng */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Viền nhẹ */
+
+}
+.row-details {
+    background: rgba(255, 255, 255, 0.2); /* Màu nền trong suốt */
+    backdrop-filter: blur(10px); /* Hiệu ứng mờ nền */
+    border-radius: 10px; /* Bo góc */
+    padding: 10px 15px; /* Canh chỉnh padding */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Đổ bóng */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Viền nhẹ */
+
+}
+.details-bg-custom {
+    color: #e6e4e4; /* Màu chữ trắng */
+    backdrop-filter: blur(10px); /* Hiệu ứng mờ nền */
+/*    padding: 10px 15px; */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.712); /* Đổ bóng */
+    border-radius: 10px;
+}
+/*.details-bg-custom::after {     
+    content: "";     
+    position: absolute;     
+    top: 0;     
+    left: 0;     
+    width: 100%;     
+    height: 100%;    
+    background: rgba(1, 1, 1, 0.633);
+    border-radius: 10px;     
+    z-index: -1;*/ /* Đặt trên lớp mờ nhưng dưới nội dung */ /*}*/ 
+.custom-underline {
+
+    display: inline-block;
+    border-bottom: 2px solid red; 
+    padding-bottom: 1px; 
+}
+
+.glitter-text {
+    font-size: 18px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ff0051, #00ff7bdd, #ff0059a4, #f200ff);
+    background-size: 400% 400%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: glitter 6s infinite linear;
+}
+
+
+.glowing-border {
+    display: inline-block;
+    position: relative;
+    border-radius: 10px;
+    outline: 2px solid transparent;
+    animation: glowing 5s linear infinite;
+}
+
+@keyframes glowing {
+    0% { outline-color: rgba(120, 192, 225, 0.962); }
+    25% { outline-color: rgba(60, 217, 46, 0.914); }
+    50% { outline-color: yellow; }
+    75% { outline-color: rgb(31, 225, 218); }
+    100% { outline-color: rgb(255, 0, 191); }
+}
+
+
+@keyframes glitter {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.modern-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #040722;
+}
+
+
+.star-rating {
+    display: inline-flex;
+    flex-direction: row-reverse;
+}
+
+.star-rating i {
+    color: rgb(248, 248, 248);
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+    margin-right: 5px;
+}
+
+.star-rating i:hover,
+.star-rating i:hover ~ i {
+    color: gold;
+}

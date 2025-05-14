@@ -100,8 +100,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/nguye/Downloads/VSCode-main/WebTruyenTranh/WebTruyenTranh/WebTruyenTranh/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[C:/Users/nguye/Downloads/VSCode-main/WebTruyenTranh/WebTruyenTranh/WebTruyenTranh/Views/Manga/DetailManga.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuZ2FcRGV0YWlsTWFuZ2EuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nguye/Downloads/VSCode-main/WebTruyenTranh/WebTruyenTranh/WebTruyenTranh/Views/Manga/ReadManga.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuZ2FcUmVhZE1hbmdhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/nguye/Downloads/VSCode-main/WebTruyenTranh/WebTruyenTranh/WebTruyenTranh/Views/Shared/Error.cshtml]

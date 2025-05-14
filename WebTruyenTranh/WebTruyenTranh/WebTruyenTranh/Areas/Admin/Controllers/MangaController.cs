@@ -21,19 +21,45 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
             _webHostEnvironment = webHostEnvironment;
             _context = context;
         }
-
-
-        // =================================================================================
-        // ===========================    HIỂN THỊ DANH SÁCH  ==============================
-        // =================================================================================
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
+            int pageSize = 10;
+
+            // Tổng số manga
+            var totalItems = _context.Manga.Count();
+            var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+
+            // Lấy danh sách manga theo trang
+            var mangas = _context.Manga
+                                 .OrderBy(m => m.MangaId)
+                                 .Skip((page - 1) * pageSize)
+                                 .Take(pageSize)
+                                 .ToList();
+
+            var mangaIds = mangas.Select(m => m.MangaId).ToList();
+
+            // Lấy các bản ghi liên quan chỉ trong phạm vi manga hiện tại
+            var mangaGenres = _context.Bridge_Manga_Genre
+                                      .Where(bg => mangaIds.Contains(bg.MangaId))
+                                      .ToList();
+
+            var mangaAuthors = _context.Bridge_Manga_Author
+                                       .Where(ba => mangaIds.Contains(ba.MangaId))
+                                       .ToList();
+
+            var genreIds = mangaGenres.Select(bg => bg.GenreId).Distinct().ToList();
+            var authorIds = mangaAuthors.Select(ba => ba.AuthorId).Distinct().ToList();
+
+            var genres = _context.Genre
+                                 .Where(g => genreIds.Contains(g.GenreId))
+                                 .ToList();
+
+            var authors = _context.Author
+                                  .Where(a => authorIds.Contains(a.AuthorId))
+                                  .ToList();
+
+            // Tổng hợp dữ liệu vào ViewModel
             List<MangaAuthorGenreViewModel> ListMangaView = new List<MangaAuthorGenreViewModel>();
-            var mangas = _context.Manga.ToList();
-            var genres = _context.Genre.ToList();
-            var authors = _context.Author.ToList();
-            var mangaGenres = _context.Bridge_Manga_Genre.ToList();
-            var mangaAuthors = _context.Bridge_Manga_Author.ToList();
             foreach (var manga in mangas)
             {
                 var relatedGenreIds = mangaGenres
@@ -62,8 +88,13 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
                 });
             }
 
+            // Truyền thông tin phân trang xuống View
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = totalPages;
+
             return View(ListMangaView);
         }
+
 
 
         // =================================================================================

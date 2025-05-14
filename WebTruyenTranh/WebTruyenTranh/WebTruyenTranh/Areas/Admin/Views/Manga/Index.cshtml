@@ -43,8 +43,8 @@
                         <td class="text-start fw-semibold" style="vertical-align: middle;">@item.MangaModel.Title</td>
                         <td style="vertical-align: middle;">
                             <img src="@item.MangaModel.CoverImage" alt="Ảnh bìa"
-                                 class="img-thumbnail rounded object-fit-cover"
-                                 style="max-width: 80px; max-height: 100px;">
+                            class="img-thumbnail rounded object-fit-cover"
+                            style="max-width: 80px; max-height: 100px;">
                         </td>
                         <td style="vertical-align: middle;">
                             <span class="badge bg-success p-2 text-white">@item.MangaModel.Status</span>
@@ -60,8 +60,8 @@
                                     <i class="bi bi-pencil-square"></i> Sửa
                                 </a>
                                 <button type="button" class="btn btn-sm btn-danger btn-delete"
-                                        data-id="@item.MangaModel.MangaId"
-                                        data-name="@item.MangaModel.Title">
+                                data-id="@item.MangaModel.MangaId"
+                                data-name="@item.MangaModel.Title">
                                     <i class="bi bi-trash"></i> Xóa
                                 </button>
 
@@ -74,6 +74,24 @@
 
     </div>
 </div>
+
+<ul class="pagination justify-content-center">
+    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+    {
+        if (i == ViewBag.CurrentPage)
+        {
+            <li class="page-item active" aria-current="page">
+                <span class="page-link">@i</span>
+            </li>
+        }
+        else
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+            </li>
+        }
+    }
+</ul>
 
 <!-- Modal xác nhận xóa -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">

@@ -1,0 +1,146 @@
+﻿@using WebTruyenTranh.Models.ViewModel
+@model MangaDetailViewModel
+<style>
+    .img-cover {
+    width: 200px; /* Chiều rộng cố định */
+    height: 290px; /* Chiều cao cố định */
+    object-fit: cover; /* Giúp ảnh không bị méo */
+    border-radius: 10px; /* Bo góc nếu cần */
+    }
+</style>
+
+<link rel="stylesheet" href="~/user/css/font.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+
+<div class="row mt-3">
+    <!-- Cột bên trái chứa thông tin truyện -->
+    <div class="col-12 col-xl-8 ms-xl-5">
+        <div class="row details-bg-custom"
+        @* style="background-image: url('img/bia2.jpg'); background-size: cover; background-position: center;" *@>
+            <div class="col-auto ms-5 mt-4">
+                <img src="@Url.Content("~" + Model.MangaModel.CoverImage)"
+                     data-src="@Url.Content("~" + Model.MangaModel.CoverImage)"
+                     alt="" class="img-cover glowing-border">
+            </div>
+
+            <div class="col ms-4">
+                <h3 class="text-shadow-title mt-2">@Model.MangaModel.Title</h3>
+                <div class="d-flex align-items-center">
+                    <span class="star-rating d-inline-block">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <span class="ms-1">3/5</span>
+                    </span>
+                </div>
+                <p>
+                    <span class="me-2"><i class="bi bi-hand-thumbs-up"></i> 1</span>
+                    <span class="me-2"><i class="bi bi-eye"></i> 2000</span>
+                    <span><i class="bi bi-chat"></i> 1</span>
+                </p>
+                <div class="mb-3">
+                    <span class="badge bg-success">Đánh nhau</span>
+                    <span class="badge bg-danger">Buff bẩn</span>
+                    <span class="badge bg-warning text-dark">Truyện Nam</span>
+                </div>
+                <p><strong><i class="bi bi-people-fill"></i> Nhóm dịch:</strong> <span>truyen30s</span></p>
+                <p><strong><i class="bi bi-soundwave"></i> Tình trạng:</strong> Đang tiến hành</p>
+                <p><strong><i class="bi bi-calendar3"></i> Ngày cập nhật:</strong></p>
+
+                <div class="mb-2 mt-1">
+                    <button class="btn btn-danger me-2">
+                        <i class="bi bi-heart"></i> Theo dõi
+                    </button>
+                    <button class="btn btn-primary me-2">Đọc từ đầu</button>
+                    <button class="btn btn-primary">Đọc tiếp</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <!-- Tóm tắt -->
+            <div class="d-inline p-2 text-bg-custom fw-bold text-dark rounded mt-3 custom-underline">
+                <i class="bi bi-file-text glitter-text"></i> Cốt truyện
+            </div>
+            <p class="mt-2">Đấm phát chết luôn @@</p>
+
+            <!-- Danh sách chương -->
+            <div class="d-inline p-2 text-bg-custom fw-bold text-dark rounded mt-2 custom-underline">
+                <i class="bi bi-list-ul glitter-text"></i> Danh sách chương truyện
+            </div>
+
+            @foreach (var item in Model.ChaptersModels)
+            {
+                <a href="/Manga/ReadManga?MangaId=@Model.MangaModel.MangaId&ChapterId=@item.ChapterId">
+                    @item.Title : @item.Alias
+                </a>
+            }
+        </div>
+    </div>
+
+
+    <!-- Cột bên phải chứa Bảng xếp hạng -->
+    <div class="col-xl-3 ms-xl-4 mt-3 d-none d-xl-block ranking-section">
+        <div class="d-inline-block p-2 w-100 text-bg-custom fw-bold text-dark rounded custom-underline">
+            <i class="bi bi-trophy-fill text-warning ms-3 me-1"></i>
+            <p class="glitter-text d-inline">BẢNG XẾP HẠNG</p>
+        </div>
+
+        <ul class="nav nav-tabs mt-3 d-flex justify-content-between">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#day">Ngày</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#week">Tuần</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#month">Tháng</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <!-- Tab Ngày -->
+            <div id="day" class="tab-pane fade show active">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex align-items-center">
+                        <img src="~/user/asset/img/chuatecamnhon.webp" alt="Truyện 1" class="rounded me-3 glowing-border" width="100" height="100">
+                        <div>
+                            <p class="mb-1 fw-bold">Solo leveling</p>
+                            <span class="text-muted"><i class="bi bi-eye"></i> 10K</span>
+                            <span class="text-muted ms-2"><i class="bi bi-hand-thumbs-up"></i> 2K</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- Tab Tuần -->
+            <div id="week" class="tab-pane fade">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex align-items-center">
+                        <img src="~/user/asset/img/img3.png" alt="Truyện 3" class="rounded me-3" width="50" height="70">
+                        <div>
+                            <p class="mb-1 fw-bold">Truyện 3</p>
+                            <span class="text-muted"><i class="bi bi-eye"></i> 15K</span>
+                            <span class="text-muted ms-2"><i class="bi bi-hand-thumbs-up"></i> 3K</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- Tab Tháng -->
+            <div id="month" class="tab-pane fade">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex align-items-center">
+                        <img src="~/user/asset/img/truyen4.jpg" alt="Truyện 4" class="rounded me-3" width="50" height="70">
+                        <div>
+                            <p class="mb-1 fw-bold">Truyện 4</p>
+                            <span class="text-muted"><i class="bi bi-eye"></i> 20K</span>
+                            <span class="text-muted ms-2"><i class="bi bi-hand-thumbs-up"></i> 4K</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

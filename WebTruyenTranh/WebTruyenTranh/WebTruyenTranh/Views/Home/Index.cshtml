@@ -1,4 +1,152 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using WebTruyenTranh.Models.ViewModel
+@model HomePageViewModel
 
+<style>
+    .custom-carousel-track.loading {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .custom-carousel-track.ready {
+        opacity: 1;
+        pointer-events: auto;
+        transition: opacity 0.3s ease;
+    }
+</style>
+
+<!-- Carousel 6 truyện một lúc -->
+<div class="custom-carousel-container container-fluid m-0 p-0 mt-4">
+    <div class="custom-carousel">
+        <button class="custom-carousel-prev">❮</button>
+        <div class="custom-carousel-wrapper">
+            <div class="custom-carousel-track">
+                @foreach (var item in Model.TopNewCorousel)
+                {
+                    <div class="custom-carousel-card rounded-3">
+                        <div class="card" style="width: 100%; height: 100%;">
+                            <a href="#">
+                                <img class="card-img-top" src="@item.MangaModel.CoverImage" alt="Card Image">
+                            </a>
+                            <div class="card-img-overlay">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <input type="number" name="mangaid" hidden value="@item.MangaModel.MangaId" />
+                                        <a asp-controller="Manga" asp-action="DetailManga" asp-route-MangaId="@item.MangaModel.MangaId">@item.MangaModel.Title</a>
+                                    </h5>
+                                    <a class="card-text" href="#">Chapter X</a>
+                                    <span class="card-text"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;X giờ trước</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="custom-carousel-card rounded-3">Card 2</div>
+                <div class="custom-carousel-card rounded-3">Card 3</div>
+                <div class="custom-carousel-card rounded-3">Card 4</div>
+                <div class="custom-carousel-card rounded-3">Card 5</div>
+                <div class="custom-carousel-card rounded-3">Card 6</div>
+                <div class="custom-carousel-card rounded-3">Card 7</div>
+                <div class="custom-carousel-card rounded-3">Card 8</div>
+                <div class="custom-carousel-card rounded-3">Card 9</div>
+                <div class="custom-carousel-card rounded-3">Card 10</div>
+            </div>
+        </div>
+        <button class="custom-carousel-next">❯</button>
+    </div>
+</div>
+<script>
+    const customTrack = document.querySelector(".custom-carousel-track");
+    const customPrev = document.querySelector(".custom-carousel-prev");
+    const customNext = document.querySelector(".custom-carousel-next");
+    const customWrapper = document.querySelector(".custom-carousel-wrapper");
+    let customCards = [...document.querySelectorAll(".custom-carousel-card")];
+
+    let customIndex = 0;
+    let isDragging = false;
+    let startX = 0, currentX = 0, moveX = 0, lastTransform = 0;
+
+    function getCustomCardWidth() {
+        return customCards[0].offsetWidth + 24; // card width + gap
+    }
+
+    function getVisibleCardCount() {
+        const wrapperWidth = customWrapper.offsetWidth;
+        const cardWidth = getCustomCardWidth();
+        return Math.floor(wrapperWidth / cardWidth);
+    }
+
+    function getMaxIndex() {
+        const visibleCards = getVisibleCardCount() + 1;
+        return customCards.length - visibleCards;
+    }
+
+    function updateCustomCarousel() {
+        const cardWidth = getCustomCardWidth();
+        const maxIndex = getMaxIndex();
+
+        // Giới hạn chỉ số
+        if (customIndex < 0) customIndex = 0;
+        if (customIndex > maxIndex) customIndex = maxIndex;
+
+        customTrack.style.transition = "transform 0.5s ease-in-out";
+        customTrack.style.transform = `translateX(-${customIndex * cardWidth}px)`;
+
+        // Ẩn nút nếu ở đầu/cuối
+        customPrev.disabled = (customIndex === 0);
+        customNext.disabled = (customIndex === maxIndex);
+    }
+
+    function startCustomDragging(e) {
+        isDragging = true;
+        startX = e.pageX || e.touches[0].pageX;
+        lastTransform = parseFloat(getComputedStyle(customTrack).transform.split(",")[4]) || 0;
+        customTrack.style.transition = "none";
+    }
+
+    function customDragging(e) {
+        if (!isDragging) return;
+        currentX = e.pageX || e.touches[0].pageX;
+        moveX = currentX - startX;
+        customTrack.style.transform = `translateX(${lastTransform + moveX}px)`;
+    }
+
+    function stopCustomDragging() {
+        if (!isDragging) return;
+        isDragging = false;
+
+        const cardWidth = getCustomCardWidth();
+        let moved = -(lastTransform + moveX);
+        let rawIndex = Math.round(moved / cardWidth);
+        customIndex = rawIndex;
+
+        updateCustomCarousel();
+    }
+
+    function nextCustomSlide() {
+        customIndex++;
+        updateCustomCarousel();
+    }
+
+    function prevCustomSlide() {
+        customIndex--;
+        updateCustomCarousel();
+    }
+
+    // Gán sự kiện
+    customNext.addEventListener("click", nextCustomSlide);
+    customPrev.addEventListener("click", prevCustomSlide);
+
+    customWrapper.addEventListener("mousedown", startCustomDragging);
+    customWrapper.addEventListener("mousemove", customDragging);
+    customWrapper.addEventListener("mouseup", stopCustomDragging);
+    customWrapper.addEventListener("mouseleave", stopCustomDragging);
+    customWrapper.addEventListener("touchstart", startCustomDragging);
+    customWrapper.addEventListener("touchmove", customDragging);
+    customWrapper.addEventListener("touchend", stopCustomDragging);
+
+    window.addEventListener("resize", updateCustomCarousel);
+
+    // Khởi động
+    updateCustomCarousel();
+</script>
+<!-- End Carousel -->

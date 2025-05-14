@@ -1,144 +1,238 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Dashboard - SB Admin</title>
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/user/css/nav.css">
+    <link rel="stylesheet" href="~/user/css/slider.css"> 
+    <link rel="stylesheet" href="~/user/css/carousel.css"> 
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
-        <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-        <!-- Navbar Search-->
-        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-            <div class="input-group">
-                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+<body>
+    <div class="myapp-wrapper container-fluid p-0 m-0">
+        <!-- Nav -->
+        <nav class="myapp-nav container-fluid border-bottom">
+            <div class="container h-100">
+                <div class="row h-100">
+                    <!-- Logo -->
+                    <div class="myapp-logo p-0 m-0 col-2 d-flex align-items-center justify-content-center">
+                        <a asp-controller="Home" asp-action="Index"><img src="~/user/asset/img/myapp-logo.png" alt=""></a>
+                    </div>
+                    <!-- Filter -->
+                    <div class="myapp-filter col-lg-5 d-lg-flex align-items-center justify-content-center d-none">
+                        <ul class="d-flex align-items-center justify-content-between gap-3 list-unstyled m-0 w-100 h-100">
+                            <li class="h-100 d-flex align-items-center justify-content-center">
+                                <div class="dropdown position-relative h-100 d-flex align-items-center justify-content-center">
+                                    <span class="fs-5 dropdown-toggle list-unstyled cursor-pointer fw-bold h-100 d-flex align-items-center justify-content-center">
+                                        Danh sách
+                                    </span>
+                                    <ul class="dropdown-menu position-absolute top-100 start-50 translate-middle-x">
+                                        <li><a class="dropdown-item d-flex align-items-center justify-content-center" href="#">Truyện mới</a></li>
+                                        <li><a class="dropdown-item d-flex align-items-center justify-content-center" href="#">Tryện cho nam</a></li>
+                                        <li><a class="dropdown-item d-flex align-items-center justify-content-center" href="#">Truyện cho nữ</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="h-100 d-flex align-items-center justify-content-center">
+                                <div class="dropdown position-relative h-100 d-flex align-items-center justify-content-center">
+                                    <span class="fs-5 dropdown-toggle list-unstyled cursor-pointer fw-bold h-100 d-flex align-items-center justify-content-center">
+                                        Thể loại
+                                    </span>
+                                    <div class="dropdown-menu position-absolute top-100 start-50 translate-middle-x" style="min-width: 700px;">
+                                        <div class="container-fluid d-flex align-items-center justify-content-center">
+                                            <ul class="row list-unstyled w-100 h-100">
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Tất cả
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Action
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Adventure
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Chuyển Sinh
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Comedy
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Cooking
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Doujinshi
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Drama
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Đam Mỹ
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Fantasy
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Gender Bender
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Historical
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Horror
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Isekai
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Live action
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Manga
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Manhua
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Manhwa
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Martial Arts
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Mecha
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Mystery
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Romance
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        School Life
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Sports
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Tragedy
+                                                    </a>
+                                                </li>
+                                                <li class="col-3">
+                                                    <a href="#" class="text-decoration-none d-flex align-items-center justify-content-center text-dark">
+                                                        Truyện Màu
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#" class="fs-5 text-decoration-none fw-bold d-flex align-items-center justify-content-center text-dark">
+                                    Tìm nâng cao
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Search -->
+                    <div class="myapp-search col-lg-3 col-8 d-flex align-items-center justify-content-center my-3">
+                        <form class="myapp-search" action="#">
+                            <div class="input-group">
+                                <input type="text" class="form-control border-0 shadow-none rounded-start-5 rounded-end-0" placeholder="Tìm kiếm truyện...">
+                                <button class="btn border-0 rounded-start-0 rounded-end-5"><img class="myapp-nav-icon" src="~/user/asset/img/icon-search.png" alt=""></button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- User -->
+                    <div class="myapp-user col-2 d-flex align-items-center justify-content-center">
+                        <div class="dropdown position-relative d-flex align-items-center justify-content-center gap-2">
+                            <img class="myapp-nav-icon" src="~/user/asset/img/icon-user.png" alt="user-icon">
+                            <span class="dropdown-toggle list-unstyled cursor-pointer">
+                                Tài khoản
+                            </span>
+                            <ul class="dropdown-menu position-absolute top-100 start-50 translate-middle-x">
+                                <li><a class="dropdown-item d-flex align-items-center justify-content-center" href="#">Hồ sơ</a></li>
+                                <li><a class="dropdown-item d-flex align-items-center justify-content-center" href="#">Cập nhập</a></li>
+                                <li><a class="dropdown-item d-flex align-items-center justify-content-center" href="#">Yêu thích</a></li>
+                                <li><a class="dropdown-item d-flex align-items-center justify-content-center" href="#">Upload</a></li>
+                                <li><a class="dropdown-item d-flex align-items-center justify-content-center" href="#">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </form>
-        <!-- Navbar-->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Settings</a></li>
-                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                    <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-    <div id="layoutSidenav">
-        <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                <div class="sb-sidenav-menu">
-                    <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
-                        </a>
-                        <div class="sb-sidenav-menu-heading">Interface</div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Layouts
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Pages
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                    Authentication
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="login.html">Login</a>
-                                        <a class="nav-link" href="register.html">Register</a>
-                                        <a class="nav-link" href="password.html">Forgot Password</a>
-                                    </nav>
-                                </div>
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                    Error
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="401.html">401 Page</a>
-                                        <a class="nav-link" href="404.html">404 Page</a>
-                                        <a class="nav-link" href="500.html">500 Page</a>
-                                    </nav>
-                                </div>
-                            </nav>
-                        </div>
-                        <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
-                        <a class="nav-link" href="tables.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
-                        </a>
-                    </div>
+        </nav>
+        <!-- End Nav -->
+        <!-- Content -->
+        <div class="myapp-content container-fluid m-0">
+            <div class="row">
+                <div class="myapp-addvertise col-xxl-2">
+                    <!-- Quảng cáo -->
                 </div>
-                <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                    Start Bootstrap
+                <div class="myapp-content-body col-12 col-xxl-8">
+                    @RenderBody()
                 </div>
-            </nav>
+                <div class="myapp-addvertise col-xxl-2">
+                    <!-- Quảng cáo -->
+                </div>
+            </div>
+
         </div>
-        <div id="layoutSidenav_content">
-            <main>
-
-                <!-- ! Main -->
-                <!-- ============================================================================================================== -->
-                @RenderBody()
-
-                <!-- ============================================================================================================== -->
-
-            </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </div>
+        @* <footer class="container-fluid" style="border: 1px solid red;"> *@
+        </footer>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-    <script src="js/datatables-simple-demo.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-

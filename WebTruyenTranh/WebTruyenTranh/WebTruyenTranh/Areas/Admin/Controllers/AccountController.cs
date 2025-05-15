@@ -27,6 +27,7 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(string username, string password, string returnUrl = null)
         {
             var user = _context.Account
@@ -34,41 +35,55 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
 
             if (user != null)
             {
+                // Kiểm tra nếu là admin thì mới cho phép đăng nhập
+                if (user.Role != "Admin")
+                {
+                    ViewBag.Error = "Không đủ quyền truy cập.";
+                    return View();
+                }
+
+                // Tạo claims cho admin
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, user.Username),
-                    new Claim(ClaimTypes.Role, user.Role) // chú ý role đúng theo db
+                    new Claim(ClaimTypes.Role, user.Role)
                 };
 
-                var claimsIdentity = new ClaimsIdentity(claims, "MyCookieAuth");
-
+                var claimsIdentity = new ClaimsIdentity(claims, "AdminCookieAuth");
                 var authProperties = new AuthenticationProperties
                 {
                     IsPersistent = true,
                     ExpiresUtc = DateTime.UtcNow.AddMinutes(300)
                 };
 
-                await HttpContext.SignInAsync("MyCookieAuth", new ClaimsPrincipal(claimsIdentity), authProperties);
+                // Đăng nhập với AdminCookieAuth
+                await HttpContext.SignInAsync("AdminCookieAuth", new ClaimsPrincipal(claimsIdentity), authProperties);
 
+                // Lưu thông tin user vào session
+                HttpContext.Session.SetString("UserId", user.AccountId.ToString());
+
+                // Redirect đến returnUrl nếu có, hoặc về trang admin nếu không có
                 if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                 {
                     return LocalRedirect(returnUrl);
                 }
 
-                if (user.Role == "Admin")
-                    return RedirectToAction("Index", "Manga", new { area = "Admin" });
-                else
-                    return RedirectToAction("Index", "Home", new { area = "" });
+                return RedirectToAction("Index", "Manga", new { area = "Admin" });
             }
 
+            // Nếu không tìm thấy user hoặc mật khẩu sai
             ViewBag.Error = "Sai tài khoản hoặc mật khẩu.";
             return View();
         }
 
-        [Authorize]
+
+        [Authorize(AuthenticationSchemes = "AdminCookieAuth", Roles = "Admin")]
+        [HttpGet]
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync("MyCookieAuth");
+            HttpContext.Session.Clear();
+            await HttpContext.SignOutAsync("AdminCookieAuth");
+            await HttpContext.SignOutAsync("UserCookieAuth");
             return RedirectToAction("Login", "Account", new { area = "Admin" });
         }
     }

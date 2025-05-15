@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -197,17 +199,32 @@
                     <!-- User -->
                     <div class="myapp-user col-2 d-flex align-items-center justify-content-center">
                         <div class="dropdown position-relative d-flex align-items-center justify-content-center gap-2">
-                            <img class="myapp-nav-icon" src="~/user/asset/img/icon-user.png" alt="user-icon">
-                            <span class="dropdown-toggle list-unstyled cursor-pointer">
-                                Tài khoản
-                            </span>
-                            <ul class="dropdown-menu position-absolute top-100 start-50 translate-middle-x">
-                                <li><a class="dropdown-item d-flex align-items-center justify-content-center" href="#">Hồ sơ</a></li>
-                                <li><a class="dropdown-item d-flex align-items-center justify-content-center" href="#">Cập nhập</a></li>
-                                <li><a class="dropdown-item d-flex align-items-center justify-content-center" href="#">Yêu thích</a></li>
-                                <li><a class="dropdown-item d-flex align-items-center justify-content-center" href="#">Upload</a></li>
-                                <li><a class="dropdown-item d-flex align-items-center justify-content-center" href="#">Đăng xuất</a></li>
-                            </ul>
+                            @{
+                                var userId = Context.Session.GetString("UserId");
+                            }
+                            @if (!string.IsNullOrEmpty(userId))
+                            {
+                                <img class="myapp-nav-icon" src="~/user/asset/img/icon-user.png" alt="user-icon">
+                                <span class="dropdown-toggle list-unstyled cursor-pointer">
+                                    Tài khoản
+                                </span>
+                                <ul class="dropdown-menu position-absolute top-100 start-50 translate-middle-x">
+                                    <li><a class="dropdown-item d-flex align-items-center justify-content-center" href="#">Hồ sơ</a></li>
+                                    <li><a class="dropdown-item d-flex align-items-center justify-content-center" href="#">Cập nhập</a></li>
+                                    <li><a class="dropdown-item d-flex align-items-center justify-content-center" href="#">Yêu thích</a></li>
+                                    <li><a class="dropdown-item d-flex align-items-center justify-content-center" href="#">Upload</a></li>
+                                    <li><a class="dropdown-item d-flex align-items-center justify-content-center" asp-controller="Account" asp-action="Logout">Đăng xuất</a></li>
+                                </ul>
+                            }
+                            else
+                            {
+                                 <a style="text-decoration: none; color: white" asp-controller="Account" asp-action="Login">
+                                    <img class="myapp-nav-icon" src="~/user/asset/img/icon-user.png" alt="user-icon">
+                                    <span class="dropdown-toggle list-unstyled cursor-pointer">
+                                       Đăng nhập
+                                    </span>
+                                </a>
+                            }
                         </div>
                     </div>
                 </div>

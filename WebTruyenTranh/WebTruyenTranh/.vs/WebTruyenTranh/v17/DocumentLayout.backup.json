@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FD0233B6-B03D-48FC-ABBD-BD4EB798D752}|WebTruyenTranh\\WebTruyenTranh.csproj|c:\\users\\nguye\\downloads\\vscode-main\\webtruyentranh\\webtruyentranh\\webtruyentranh\\views\\manga\\detailmanga.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FD0233B6-B03D-48FC-ABBD-BD4EB798D752}|WebTruyenTranh\\WebTruyenTranh.csproj|solutionrelative:webtruyentranh\\views\\manga\\detailmanga.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{FD0233B6-B03D-48FC-ABBD-BD4EB798D752}|WebTruyenTranh\\WebTruyenTranh.csproj|c:\\users\\nguye\\downloads\\vscode-main\\webtruyentranh\\webtruyentranh\\webtruyentranh\\views\\manga\\readmanga.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FD0233B6-B03D-48FC-ABBD-BD4EB798D752}|WebTruyenTranh\\WebTruyenTranh.csproj|solutionrelative:webtruyentranh\\views\\manga\\readmanga.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD0233B6-B03D-48FC-ABBD-BD4EB798D752}|WebTruyenTranh\\WebTruyenTranh.csproj|c:\\users\\nguye\\downloads\\vscode-main\\webtruyentranh\\webtruyentranh\\webtruyentranh\\controllers\\mangacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD0233B6-B03D-48FC-ABBD-BD4EB798D752}|WebTruyenTranh\\WebTruyenTranh.csproj|solutionrelative:webtruyentranh\\controllers\\mangacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DetailManga.cshtml",
-              "DocumentMoniker": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\Views\\Manga\\DetailManga.cshtml",
-              "RelativeDocumentMoniker": "WebTruyenTranh\\Views\\Manga\\DetailManga.cshtml",
-              "ToolTip": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\Views\\Manga\\DetailManga.cshtml",
-              "RelativeToolTip": "WebTruyenTranh\\Views\\Manga\\DetailManga.cshtml",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAAAHMAAAAVAAAAAAAAAA==",
+              "Title": "ReadManga.cshtml",
+              "DocumentMoniker": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\Views\\Manga\\ReadManga.cshtml",
+              "RelativeDocumentMoniker": "WebTruyenTranh\\Views\\Manga\\ReadManga.cshtml",
+              "ToolTip": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\Views\\Manga\\ReadManga.cshtml",
+              "RelativeToolTip": "WebTruyenTranh\\Views\\Manga\\ReadManga.cshtml",
+              "ViewState": "AgIAAK4BAAAAAAAAAAAAAMgBAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-14T06:11:42.102Z",
+              "WhenOpened": "2025-05-15T08:23:15.708Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MangaController.cs",
+              "DocumentMoniker": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\Controllers\\MangaController.cs",
+              "RelativeDocumentMoniker": "WebTruyenTranh\\Controllers\\MangaController.cs",
+              "ToolTip": "C:\\Users\\nguye\\Downloads\\VSCode-main\\WebTruyenTranh\\WebTruyenTranh\\WebTruyenTranh\\Controllers\\MangaController.cs",
+              "RelativeToolTip": "WebTruyenTranh\\Controllers\\MangaController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T08:22:53.884Z",
               "EditorCaption": ""
             }
           ]

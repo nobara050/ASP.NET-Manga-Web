@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace WebTruyenTranh.Controllers
                 return NotFound();
             var chapters = await _context.Chapter
                 .Where(c => c.MangaId == MangaId)
-                .OrderBy(c => c.Title)
+                .OrderByDescending(c => c.Title)
                 .ToListAsync();
             var mangaGenres = await _context.Bridge_Manga_Genre
                 .Where(bg => bg.MangaId == MangaId)
@@ -43,125 +44,115 @@ namespace WebTruyenTranh.Controllers
             var authors = await _context.Author
                 .Where(a => authorIds.Contains(a.AuthorId))
                 .ToListAsync();
+
+            var likeCount = await _context.CommentLike
+                    .CountAsync(cl => _context.Comment
+                        .Where(c => c.MangaId == MangaId && !c.IsDeleted)
+                        .Select(c => c.CommentId)
+                        .Contains(cl.CommentId));
+
             var viewModel = new MangaDetailViewModel
             {
                 MangaModel = manga,
                 ChaptersModels = chapters,
                 GenresModels = genres,
-                AuthorsModels = authors
+                AuthorsModels = authors,
+                Like = likeCount
             };
             return View(viewModel);
-        }
-
-        // Lấy thông tin đầy đủ gồm Genre, Author cho danh sách manga được đưa vào
-        private List<MangaAuthorGenreViewModel> GetMangaWithDetails(List<MangaModel> mangas)
-        {
-            var mangaIds = mangas.Select(m => m.MangaId).ToList();
-
-            var mangaGenres = _context.Bridge_Manga_Genre
-                                      .Where(bg => mangaIds.Contains(bg.MangaId))
-                                      .ToList();
-
-            var mangaAuthors = _context.Bridge_Manga_Author
-                                       .Where(ba => mangaIds.Contains(ba.MangaId))
-                                       .ToList();
-
-            var genreIds = mangaGenres.Select(bg => bg.GenreId).Distinct().ToList();
-            var authorIds = mangaAuthors.Select(ba => ba.AuthorId).Distinct().ToList();
-
-            var genres = _context.Genre
-                                 .Where(g => genreIds.Contains(g.GenreId))
-                                 .ToList();
-
-            var authors = _context.Author
-                                  .Where(a => authorIds.Contains(a.AuthorId))
-                                  .ToList();
-
-            var result = new List<MangaAuthorGenreViewModel>();
-
-            foreach (var manga in mangas)
-            {
-                var relatedGenreIds = mangaGenres
-                    .Where(bg => bg.MangaId == manga.MangaId)
-                    .Select(bg => bg.GenreId)
-                    .ToList();
-
-                var relatedGenres = genres
-                    .Where(g => relatedGenreIds.Contains(g.GenreId))
-                    .ToList();
-
-                var relatedAuthorIds = mangaAuthors
-                    .Where(ba => ba.MangaId == manga.MangaId)
-                    .Select(ba => ba.AuthorId)
-                    .ToList();
-
-                var relatedAuthors = authors
-                    .Where(a => relatedAuthorIds.Contains(a.AuthorId))
-                    .ToList();
-
-                result.Add(new MangaAuthorGenreViewModel
-                {
-                    MangaModel = manga,
-                    GenresModels = relatedGenres,
-                    AuthorsModels = relatedAuthors
-                });
-            }
-
-            return result;
         }
 
         public async Task<IActionResult> ReadManga(int MangaId, int ChapterId)
         {
-            var manga = await _context.Manga.FindAsync(MangaId);
-            if (manga == null)
-                return NotFound();
+            try
+            {        
+                var manga = await _context.Manga.FindAsync(MangaId);
+                if (manga == null)
+                    return NotFound();
 
-            var chapters = await _context.Chapter
-                .Where(c => c.MangaId == MangaId)
-                .OrderBy(c => c.Title)
-                .ToListAsync();
+                var chapters = await _context.Chapter
+                    .Where(c => c.MangaId == MangaId)
+                    .OrderBy(c => c.Title)
+                    .ToListAsync();
 
-            var chapter = await _context.Chapter
-                .FirstOrDefaultAsync(c => c.ChapterId == ChapterId && c.MangaId == MangaId);
-            if (chapter == null)
-                return NotFound();
+                var chapter = await _context.Chapter
+                    .FirstOrDefaultAsync(c => c.ChapterId == ChapterId && c.MangaId == MangaId);
+                if (chapter == null)
+                    return NotFound();
 
-            // Chapter trước: Title “nhỏ hơn”, sắp xếp giảm dần, lấy bản ghi đầu tiên
-            var prevChapter = await _context.Chapter
-                .Where(c => c.MangaId == MangaId
-                            && string.Compare(c.Title, chapter.Title) < 0)
-                .OrderByDescending(c => c.Title)
-                .FirstOrDefaultAsync();
+                // Chapter trước: Title “nhỏ hơn”, sắp xếp giảm dần, lấy bản ghi đầu tiên
+                var prevChapter = await _context.Chapter
+                    .Where(c => c.MangaId == MangaId
+                                && string.Compare(c.Title, chapter.Title) < 0)
+                    .OrderByDescending(c => c.Title)
+                    .FirstOrDefaultAsync();
 
-            // Chapter kế tiếp: Title “lớn hơn”, sắp xếp tăng dần, lấy bản ghi đầu tiên
-            var nextChapter = await _context.Chapter
-                .Where(c => c.MangaId == MangaId
-                            && string.Compare(c.Title, chapter.Title) > 0)
-                .OrderBy(c => c.Title)
-                .FirstOrDefaultAsync();
+                // Chapter kế tiếp: Title “lớn hơn”, sắp xếp tăng dần, lấy bản ghi đầu tiên
+                var nextChapter = await _context.Chapter
+                    .Where(c => c.MangaId == MangaId
+                                && string.Compare(c.Title, chapter.Title) > 0)
+                    .OrderBy(c => c.Title)
+                    .FirstOrDefaultAsync();
 
-            var contents = await _context.Content
-                .Where(c => c.ChapterId == ChapterId)
-                .OrderBy(c => c.ContentNum)
-                .ToListAsync();
+                var contents = await _context.Content
+                    .Where(c => c.ChapterId == ChapterId)
+                    .OrderBy(c => c.ContentNum)
+                    .ToListAsync();
 
-            //var comments = await _context.Comment
-            //    .Where(c => c.MangaId == MangaId && c.ChapterId == ChapterId)
-            //    .OrderByDescending(c => c.CreatedAt)
-            //    .ToListAsync();
+                // ========================================================================
 
-            var viewModel = new MangaPageViewModel
+                // Lấy danh sách các bình luận gốc (không phải reply)
+                var comments = await _context.Comment
+                    .Where(c => c.MangaId == MangaId &&
+                               c.ChapterId == ChapterId &&
+                               c.ParentCommentId == null &&
+                               !c.IsDeleted)
+                    .ToListAsync();
+
+                // Lấy thông tin user và số lượng like cho mỗi comment
+                foreach (var comment in comments)
+                {
+                    comment.LoadUser(_context);
+                    comment.GetLikeCount(_context);
+                }
+
+                // Lấy các replies cho mỗi comment
+                foreach (var comment in comments)
+                {
+                    var replies = await _context.Comment
+                        .Where(c => c.ParentCommentId == comment.CommentId && !c.IsDeleted)
+                        .ToListAsync();
+
+                    foreach (var reply in replies)
+                    {
+                        reply.LoadUser(_context);
+                        reply.GetLikeCount(_context);
+                    }
+
+                    comment.Replies = replies;
+                    comment.SortReplies();
+                }
+
+                // Sắp xếp comments theo thời gian
+                comments = comments.OrderByDescending(c => c.CreatedAt).ToList();
+                
+                var viewModel = new MangaPageViewModel
+                {
+                    Manga = manga,
+                    Chapters = chapters,
+                    Chapter = chapter,
+                    Contents = contents,
+                    PrevChapter = prevChapter,
+                    NextChapter = nextChapter,
+                    Comments = comments
+                };
+
+                return View(viewModel);
+            }
+            catch (Exception)
             {
-                Manga = manga,
-                Chapters = chapters,
-                Chapter = chapter,
-                Contents = contents,
-                PrevChapter = prevChapter,
-                NextChapter = nextChapter
-                //Comments = comments
-            };
-
-            return View(viewModel);
+                return RedirectToAction("Error", "Home");
+            }
         }
     }
 }

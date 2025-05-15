@@ -4632,13 +4632,140 @@ wwwroot\manga\1 - Shy\Chương 2\6.jpg
 wwwroot\manga\1 - Shy\Chương 2\7.jpg
 wwwroot\manga\1 - Shy\Chương 2\8.jpg
 wwwroot\manga\1 - Shy\Chương 2\9.jpg
+wwwroot\manga\1 - Shy\Chương 3\1.jpg
+wwwroot\manga\1 - Shy\Chương 3\10.jpg
+wwwroot\manga\1 - Shy\Chương 3\11.jpg
+wwwroot\manga\1 - Shy\Chương 3\12.jpg
+wwwroot\manga\1 - Shy\Chương 3\13.jpg
+wwwroot\manga\1 - Shy\Chương 3\14.jpg
+wwwroot\manga\1 - Shy\Chương 3\15.jpg
+wwwroot\manga\1 - Shy\Chương 3\2.jpg
+wwwroot\manga\1 - Shy\Chương 3\3.jpg
+wwwroot\manga\1 - Shy\Chương 3\4.jpg
+wwwroot\manga\1 - Shy\Chương 3\5.jpg
+wwwroot\manga\1 - Shy\Chương 3\6.jpg
+wwwroot\manga\1 - Shy\Chương 3\7.jpg
+wwwroot\manga\1 - Shy\Chương 3\8.jpg
+wwwroot\manga\1 - Shy\Chương 3\9.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\1.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\10.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\100.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\11.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\12.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\13.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\14.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\15.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\16.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\17.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\18.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\19.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\2.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\20.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\21.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\22.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\23.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\24.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\25.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\26.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\27.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\28.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\29.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\3.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\30.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\31.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\32.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\33.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\34.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\35.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\36.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\37.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\38.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\39.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\4.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\40.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\41.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\42.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\43.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\44.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\45.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\46.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\47.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\48.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\49.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\5.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\50.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\51.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\52.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\53.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\54.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\55.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\56.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\57.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\58.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\59.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\6.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\60.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\61.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\62.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\63.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\64.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\65.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\66.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\67.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\68.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\69.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\7.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\70.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\71.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\72.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\73.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\74.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\75.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\76.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\77.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\78.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\79.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\8.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\80.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\81.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\82.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\83.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\84.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\85.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\86.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\87.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\88.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\89.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\9.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\90.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\91.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\92.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\93.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\94.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\95.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\96.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\97.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\98.jpg
+wwwroot\manga\2 - Hand Jumper\One-Shot\99.jpg
+wwwroot\manga\3 - Our Super Adventure\One-Shot\1.jpg
+wwwroot\manga\3 - Our Super Adventure\One-Shot\2.jpg
+wwwroot\manga\3 - Our Super Adventure\One-Shot\3.jpg
+wwwroot\manga\3 - Our Super Adventure\One-Shot\4.jpg
+wwwroot\manga\3 - Our Super Adventure\One-Shot\5.jpg
+wwwroot\manga\3 - Our Super Adventure\One-Shot\6.jpg
+wwwroot\manga\3 - Our Super Adventure\One-Shot\7.png
+wwwroot\manga\3 - Our Super Adventure\One-Shot\8.png
+wwwroot\manga\3 - Our Super Adventure\One-Shot\9.jpg
 wwwroot\uploads\049b3e11-2bc9-4e46-9909-ff204526218e_mangacover.png
+wwwroot\uploads\33c7f723-6972-442c-b046-534b351dfe39_Our Super Aventure.jpg
 wwwroot\uploads\8007ae97-2509-4959-b735-fbfdc483368b_1.jpg
 wwwroot\uploads\9f0e2d80-f050-4c3e-ad79-b289046a9f6f_1.jpg
 wwwroot\uploads\b3350fe9-0960-4783-a4af-247d50f90c3e_1.jpg
 wwwroot\uploads\d716c8ac-5f5d-4e1b-889a-d38dcd19212b_img1.jpg
 wwwroot\uploads\d88f5275-bef7-43f1-98b6-452f3b2c1df2_1.jpg
 wwwroot\uploads\e4a47c35-cc39-4319-91a1-23c0536c4274_1.jpg
+wwwroot\uploads\ea780c58-6618-49ba-9511-5aedd5aa04db_handjumper.png
+wwwroot\uploads\no_cover.png
 wwwroot\user\asset\img\bia.jpg
 wwwroot\user\asset\img\bia-1.jpg
 wwwroot\user\asset\img\bia2.jpg

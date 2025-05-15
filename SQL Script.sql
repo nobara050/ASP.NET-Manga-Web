@@ -1,4 +1,4 @@
-CREATE DATABASE MangaDB;
+﻿CREATE DATABASE MangaDB;
 GO
 USE MangaDB;
 
@@ -9,6 +9,10 @@ TRUNCATE TABLE Chapter;
 TRUNCATE TABLE Content;
 TRUNCATE TABLE Genre;
 TRUNCATE TABLE Manga;
+TRUNCATE TABLE Account;
+TRUNCATE TABLE Comment;
+TRUNCATE TABLE CommentLike;
+TRUNCATE TABLE CommentReport;
 
 CREATE TABLE Manga (
     MangaId INT IDENTITY(1,1) PRIMARY KEY,
@@ -73,5 +77,44 @@ CREATE TABLE Account (
 
 INSERT INTO Account (Username, Email, Password, Role)
 VALUES ('admin', 'nguyentiendat050@gmail.com', 'admin', 'Admin');
+INSERT INTO Account (Username, Email, Password, Role)
+VALUES ('user', '22520226@gm.edu.uit.com', 'user', 'User');
 
-SELECT * FROM Account; 
+CREATE TABLE Comment (
+    CommentId INT IDENTITY(1,1) PRIMARY KEY,
+    MangaId INT NOT NULL,
+    ChapterId INT NOT NULL,
+    AccountId INT NOT NULL,
+    ParentCommentId INT NULL,
+    Content NVARCHAR(MAX) NOT NULL,
+    CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
+    UpdatedAt DATETIME NULL,
+    IsDeleted BIT NOT NULL DEFAULT 0,
+);
+
+CREATE TABLE CommentLike (
+    LikeId INT IDENTITY(1,1) PRIMARY KEY,
+    CommentId INT NOT NULL,
+    AccountId INT NOT NULL,
+    CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
+);
+
+CREATE TABLE CommentReport (
+    ReportId INT IDENTITY(1,1) PRIMARY KEY,
+    CommentId INT NOT NULL,
+    AccountId INT NOT NULL,
+    Reason NVARCHAR(500) NULL,
+    CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
+);
+
+INSERT INTO Comment (MangaId, ChapterId, AccountId, Content)
+VALUES ('1', '1', '1', N'Hay quá');
+
+INSERT INTO Comment (MangaId, ChapterId, AccountId, Content, ParentCommentId)
+VALUES ('1', '1', '1', N'Hay quá', '1');
+
+INSERT INTO Comment (MangaId, ChapterId, AccountId, Content)
+VALUES ('1', '1', '1', N'Tôi muốn test thử');
+
+INSERT INTO Comment (MangaId, ChapterId, AccountId, Content, ParentCommentId)
+VALUES ('1', '1', '1', N'Tôi muốn test thử 2', '3');

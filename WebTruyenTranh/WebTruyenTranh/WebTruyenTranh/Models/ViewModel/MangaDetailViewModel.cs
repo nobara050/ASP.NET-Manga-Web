@@ -6,6 +6,6 @@
         public List<ChapterModel> ChaptersModels { get; set; }
         public List<GenreModel> GenresModels { get; set; }
         public List<AuthorModel> AuthorsModels { get; set; }
-        //public List<CommentModel> Comments { get; set; } 
+        public int Like { get; set; } = 0;
     }
 }

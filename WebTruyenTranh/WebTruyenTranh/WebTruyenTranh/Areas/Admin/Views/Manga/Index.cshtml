@@ -1,5 +1,5 @@
 ﻿@using WebTruyenTranh.Models.ViewModel
-@model List<MangaAuthorGenreViewModel>
+@model ListMangaAuthorGenreViewModel
 
 @{
     ViewData["Title"] = "Danh Sách Truyện";
@@ -36,7 +36,7 @@
                 </tr>
             </thead>
             <tbody class="text-center" style="font-size: 1rem;">
-                @foreach (var item in Model)
+                @foreach (var item in Model.Mangas)
                 {
                     <tr id="manga-row-@item.MangaModel.MangaId">
                         <td class="fw-semibold" style="vertical-align: middle;">@item.MangaModel.MangaId</td>
@@ -76,9 +76,9 @@
 </div>
 
 <ul class="pagination justify-content-center">
-    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+    @for (int i = 1; i <= Model.TotalPages; i++)
     {
-        if (i == ViewBag.CurrentPage)
+        if (i == Model.CurrentPage)
         {
             <li class="page-item active" aria-current="page">
                 <span class="page-link">@i</span>

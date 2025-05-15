@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WebTruyenTranh.Areas.Admin.Controllers
 {
-    [Authorize]
     [Area("Admin")]
+    [Authorize(AuthenticationSchemes = "AdminCookieAuth", Roles = "Admin")]
     public class AuthorController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -16,14 +16,18 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
             _context = context;
         }
 
-        // Hiển thị danh sách
+        // =================================================================================
+        // ============================    HIỂN THỊ TÁC GIẢ    =============================
+        // =================================================================================
         public IActionResult Index()
         {
-            var authors = _context.Author.ToList();
+            var authors = AuthorModel.GetAll(_context);
             return View(authors);
         }
 
-        // Thêm
+        // =================================================================================
+        // =============================    THÊM TÁC GIẢ       =============================
+        // =================================================================================
         public IActionResult Create()
         {
             return View();
@@ -34,17 +38,18 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Author.Add(author);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                if (author.Insert(_context))
+                    return RedirectToAction(nameof(Index));
             }
             return View(author);
         }
 
-        // Chỉnh sửa
+        // =================================================================================
+        // =============================    SỬA TÁC GIẢ        =============================
+        // =================================================================================
         public IActionResult Edit(int id)
         {
-            var author = _context.Author.Find(id);
+            var author = AuthorModel.GetById(_context, id);
             if (author == null) return NotFound();
             return View(author);
         }
@@ -54,18 +59,18 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Author.Update(author);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                if (author.Update(_context))
+                    return RedirectToAction(nameof(Index));
             }
             return View(author);
         }
 
-        // Xóa
-
+        // =================================================================================
+        // =============================    XÓA TÁC GIẢ        =============================
+        // =================================================================================
         public IActionResult Delete(int id)
         {
-            var author = _context.Author.Find(id);
+            var author = AuthorModel.GetById(_context, id);
             if (author == null) return NotFound();
             return View(author);
         }
@@ -73,12 +78,8 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult DeleteConfirmed(int id)
         {
-            var author = _context.Author.Find(id);
-            if (author == null)
-                return NotFound();
-
-            _context.Author.Remove(author);
-            _context.SaveChanges();
+            var result = AuthorModel.Delete(_context, id);
+            if (!result) return NotFound();
 
             return Ok(); // AJAX sẽ nhận kết quả này
         }

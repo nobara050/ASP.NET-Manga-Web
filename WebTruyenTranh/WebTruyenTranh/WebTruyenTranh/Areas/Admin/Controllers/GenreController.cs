@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WebTruyenTranh.Areas.Admin.Controllers
 {
-    [Authorize]
     [Area("Admin")]
+    [Authorize(AuthenticationSchemes = "AdminCookieAuth", Roles = "Admin")]
     public class GenreController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -16,14 +16,18 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
             _context = context;
         }
 
-        // Hiển thị danh sách
+        // =================================================================================
+        // ===========================    HIỂN THỊ THỂ LOẠI    =============================
+        // =================================================================================
         public IActionResult Index()
         {
-            var genres = _context.Genre.ToList();
+            var genres = GenreModel.GetAll(_context);
             return View(genres);
         }
 
-        // Thêm
+        // =================================================================================
+        // ===========================      THÊM THỂ LOẠI      =============================
+        // =================================================================================
         public IActionResult Create()
         {
             return View();
@@ -34,17 +38,18 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Genre.Add(genre);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+                if (genre.Insert(_context))
+                    return RedirectToAction(nameof(Index));
             }
             return View(genre);
         }
 
-        // Chỉnh sửa
+        // =================================================================================
+        // ===========================      SỬA THỂ LOẠI       =============================
+        // =================================================================================
         public IActionResult Edit(int id)
         {
-            var genre = _context.Genre.Find(id);
+            var genre = GenreModel.GetById(_context, id);
             if (genre == null) return NotFound();
             return View(genre);
         }
@@ -54,17 +59,18 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Genre.Update(genre);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+                if (genre.Update(_context))
+                    return RedirectToAction(nameof(Index));
             }
             return View(genre);
         }
 
-        // Xóa 
+        // =================================================================================
+        // ===========================      XÓA THỂ LOẠI       =============================
+        // =================================================================================
         public IActionResult Delete(int id)
         {
-            var genre = _context.Genre.Find(id);
+            var genre = GenreModel.GetById(_context, id);
             if (genre == null) return NotFound();
             return View(genre);
         }
@@ -72,12 +78,8 @@ namespace WebTruyenTranh.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult DeleteConfirmed(int id)
         {
-            var genre = _context.Genre.Find(id);
-            if (genre == null)
-                return NotFound();
-
-            _context.Genre.Remove(genre);
-            _context.SaveChanges();
+            var result = GenreModel.Delete(_context, id);
+            if (!result) return NotFound();
 
             return Ok();
         }

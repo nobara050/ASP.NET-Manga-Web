@@ -371,7 +371,7 @@
                     @foreach (var item in Model.Chapters)
                     {
                         <option value="@item.ChapterId"
-                                selected="@(item.ChapterId == Model.Chapter.ChapterId)">@item.Title</option>
+                        selected="@(item.ChapterId == Model.Chapter.ChapterId)">@item.Title</option>
                     }
                 </select>
                 <button onclick="goToNextChapter()">Next Chapter →</button>
@@ -390,13 +390,13 @@
 
             <!-- Bottom Navigation Bar -->
             <div class="chapter-navigation">
-                
+
                 <button onclick="goToPrevChapter()">← Prev Chapter</button>
                 <select id="chapter-select-bottom">
                     @foreach (var item in Model.Chapters)
                     {
                         <option value="@item.ChapterId"
-                                selected="@(item.ChapterId == Model.Chapter.ChapterId)">@item.Title</option>
+                        selected="@(item.ChapterId == Model.Chapter.ChapterId)">@item.Title</option>
                     }
                 </select>
                 <button onclick="goToNextChapter()">Next Chapter →</button>
@@ -417,61 +417,152 @@
 
             <!-- Comments Section -->
             <div class="comments-section">
-                <div class="comments-header">Comments (3)</div>
+                <div class="comments-header">Comments</div>
                 <div class="comment-input">
                     <textarea placeholder="Write a comment... (Sign in to comment)"></textarea>
                     <button onclick="postComment()">Post Comment</button>
                 </div>
                 <div class="comment-list">
-                    <div class="comment">
-                        <div class="comment-header">
-                            <div class="comment-avatar"></div>
-                            <span class="comment-username">DarkSReaperZ</span>
-                            <span class="comment-timestamp">4 hours ago</span>
-                        </div>
-                        <div class="comment-body">
-                            Great chapter! Can't wait for the next one.
-                        </div>
-                        <div class="comment-actions">
-                            <a href="#">Like (10)</a>
-                            <a href="#">Reply</a>
-                            <a href="#">Report</a>
-                        </div>
-                        <div class="comment-reply">
-                            <div class="comment-header">
-                                <div class="comment-avatar"></div>
-                                <span class="comment-username">MangaFan123</span>
-                                <span class="comment-timestamp">2 hours ago</span>
+                    <!--=====================         Comments Parent       =========================-->
+                    @if (Model.Comments != null && Model.Comments.Any())
+                    {
+                        @foreach (var item in Model.Comments)
+                        {
+                            <div class="comment">
+                                <div class="comment-header">
+                                    <div class="comment-avatar"></div>
+                                    <span class="comment-username">@item.User.Username</span>
+                                    <span class="comment-timestamp">
+                                        @{
+                                            var timeDiff = DateTime.Now - item.CreatedAt;
+                                            string timeDisplay;
+
+                                            if (timeDiff.TotalMinutes < 1)
+                                                timeDisplay = "Vừa xong";
+                                            else if (timeDiff.TotalMinutes < 60)
+                                                timeDisplay = $"{(int)timeDiff.TotalMinutes} phút trước";
+                                            else if (timeDiff.TotalHours < 24)
+                                                timeDisplay = $"{(int)timeDiff.TotalHours} giờ trước";
+                                            else if (timeDiff.TotalDays < 7)
+                                                timeDisplay = $"{(int)timeDiff.TotalDays} ngày trước";
+                                            else
+                                                timeDisplay = $"vào ngày {item.CreatedAt:dd/MM/yyyy}";
+                                        }
+                                        @timeDisplay
+                                    </span>
+                                </div>
+
+                                <!-- Body -->
+                                <div class="comment-body">
+                                    @item.Content
+                                </div>
+                                <div class="comment-actions">
+                                    <a href="#">Like @item.LikeCount</a>
+                                    <a data-comment-id="@item.CommentId">Reply</a>
+                                    <a href="#">Report</a>
+                                </div>
+
+                                <!-- Rep -->
+                                <div class="reply-form-container" id="reply-form-@item.CommentId" style="display:none;">
+                                    <form method="post" action="/Comment/AddReply">
+                                        <input type="hidden" name="ParentCommentId" value="@item.CommentId" />
+                                        <textarea name="Content" placeholder="Nhập bình luận..."></textarea>
+                                        <button type="submit">Gửi</button>
+                                    </form>
+                                </div>
+
+                                <!--=====================         Comments Child       =========================-->
+                                @if (item.Replies != null && item.Replies.Any())
+                                {
+                                    @foreach (var replyitem in item.Replies)
+                                    {
+                                        <div class="comment-reply">
+                                            <div class="comment-header">
+                                                <div class="comment-avatar"></div>
+                                                <span class="comment-username">@replyitem.User.Username</span>
+                                                <span class="comment-timestamp">
+                                                    @{
+                                                        var timeDiffReply = DateTime.Now - item.CreatedAt;
+                                                        string timeDisplayReply;
+
+                                                        if (timeDiffReply.TotalMinutes < 1)
+                                                            timeDisplayReply = "Vừa xong";
+                                                        else if (timeDiffReply.TotalMinutes < 60)
+                                                            timeDisplayReply = $"{(int)timeDiffReply.TotalMinutes} phút trước";
+                                                        else if (timeDiffReply.TotalHours < 24)
+                                                            timeDisplayReply = $"{(int)timeDiffReply.TotalHours} giờ trước";
+                                                        else if (timeDiffReply.TotalDays < 7)
+                                                            timeDisplayReply = $"{(int)timeDiffReply.TotalDays} ngày trước";
+                                                        else
+                                                            timeDisplayReply = $"vào ngày {item.CreatedAt:dd/MM/yyyy}";
+                                                    }
+                                                    @timeDisplayReply
+                                                </span>
+                                            </div>
+
+                                            <!-- Body -->
+                                            <div class="comment-body">
+                                                @replyitem.Content
+                                            </div>
+                                            <div class="comment-actions">
+                                                <a href="#">Like @replyitem.LikeCount</a>
+                                                <a data-comment-id="@replyitem.CommentId" data-parent-id="@item.CommentId">Reply</a>
+                                                <a href="#">Report</a>
+                                            </div>
+
+                                            <!-- Rep -->
+                                            <div class="reply-form-container" id="reply-form-@item.CommentId" style="display:none;">
+                                                <form method="post" action="/Comment/AddReply">
+                                                    <input type="hidden" name="ParentCommentId" value="@item.CommentId" />
+                                                    <textarea name="Content" placeholder="Nhập bình luận..."></textarea>
+                                                    <button type="submit">Gửi</button>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    }
+                                }
                             </div>
-                            <div class="comment-body">
-                                Totally agree! The art is amazing too.
-                            </div>
-                            <div class="comment-actions">
-                                <a href="#">Like (5)</a>
-                                <a href="#">Reply</a>
-                                <a href="#">Report</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comment">
-                        <div class="comment-header">
-                            <div class="comment-avatar"></div>
-                            <span class="comment-username">ReaderX</span>
-                            <span class="comment-timestamp">1 hour ago</span>
-                        </div>
-                        <div class="comment-body">
-                            I love the character development in this chapter!
-                        </div>
-                        <div class="comment-actions">
-                            <a href="#">Like (8)</a>
-                            <a href="#">Reply</a>
-                            <a href="#">Report</a>
-                        </div>
-                    </div>
+                        }
+                    }
                 </div>
             </div>
         </div>
     </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const replyButtons = document.querySelectorAll(".comment-actions a[data-comment-id]");
+
+            replyButtons.forEach(button => {
+                button.addEventListener("click", function (e) {
+                    e.preventDefault();
+
+                    const commentId = this.getAttribute("data-comment-id");
+                    const parentCommentId = this.getAttribute("data-parent-id") || commentId;
+
+                    // Ẩn toàn bộ các form trước
+                    document.querySelectorAll(".reply-form-container").forEach(form => {
+                        form.style.display = "none";
+                    });
+
+                    // Hiện đúng form theo vị trí người dùng nhấn reply
+                    const formContainer = document.getElementById("reply-form-" + commentId);
+                    if (formContainer) {
+                        formContainer.style.display = "block";
+
+                        // Đảm bảo gán đúng ParentCommentId cho input trong form
+                        const input = formContainer.querySelector("input[name='ParentCommentId']");
+                        if (input) {
+                            input.value = parentCommentId;
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+
 
     <!-- Floating Action Button -->
     <button class="fab" onclick="scrollToTop()">↑</button>

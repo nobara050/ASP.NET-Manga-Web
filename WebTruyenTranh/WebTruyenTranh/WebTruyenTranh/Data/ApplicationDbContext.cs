@@ -18,6 +18,8 @@ namespace WebTruyenTranh.Data
         public DbSet<AccountModel> Account { get; set; }
         public DbSet<ChapterModel> Chapter { get; set; }
         public DbSet<ContentModel> Content { get; set; }
+        public DbSet<CommentModel> Comment { get; set; }
+        public DbSet<CommentLikeModel> CommentLike { get; set; }
 
 
 
@@ -30,6 +32,8 @@ namespace WebTruyenTranh.Data
             modelBuilder.Entity<AccountModel>().ToTable("Account");
             modelBuilder.Entity<ChapterModel>().ToTable("Chapter");
             modelBuilder.Entity<ContentModel>().ToTable("Content");
+            modelBuilder.Entity<CommentModel>().ToTable("Comment");
+            modelBuilder.Entity<CommentLikeModel>().ToTable("CommentLike");
             modelBuilder.Entity<Bridge_Manga_AuthorModel>()
             .HasKey(x => new { x.MangaId, x.AuthorId });
             modelBuilder.Entity<Bridge_Manga_GenreModel>()

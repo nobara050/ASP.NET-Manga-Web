@@ -2,7 +2,7 @@
 @model GenreModel
 
 <div class="w-100 d-flex justify-content-center align-items-center">
-    <h2 class="text-primary">Thêm thể loại mới</h2>
+    <h2 class="text-primary fw-bold display-6 border-bottom pb-2 mb-4" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">Thêm thể loại mới</h2>
 </div>
 
 <form asp-action="Create">
@@ -10,6 +10,6 @@
         <label class="form-label">Tên thể loại</label>
         <input type="text" class="form-control" asp-for="Name" required />
     </div>
-    <button type="submit" class="btn btn-success">💾 Lưu</button>
-    <a class="btn btn-secondary" href="/Admin/Genre/Index">🔙 Quay lại</a>
+    <button type="submit" class="btn btn-success">Lưu</button>
+    <a class="btn btn-secondary" href="/Admin/Genre/Index">Hủy</a>
 </form>

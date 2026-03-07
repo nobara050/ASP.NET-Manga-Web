@@ -9,14 +9,14 @@ A full-stack web application for reading and managing manga, built with **ASP.NE
 **User-facing**
 - Browse manga by title, genre, and author
 - Read chapters page by page
-- Homepage banner slider
+- Coin-based chapter unlock system (Balance)
+- Threaded comment system per chapter with reply support, likes, and reporting
 
 **Admin / Management**
 - User account management with role-based access control
 - Manga management with master-detail structure: Manga → Chapters → Content pages
 - Genre and author management with many-to-many relationships via bridge tables
-- Slider management for homepage banners
-- Manga view count tracking per user
+- Comment moderation (soft delete, report review)
 
 ---
 
@@ -37,11 +37,12 @@ A full-stack web application for reading and managing manga, built with **ASP.NE
 | Account | User accounts (username, email, hashed password, avatar, role, balance) |
 | Manga | Manga entries (title, description, cover/background image, status) |
 | Chapter | Chapters per manga (title, alias, price) |
-| Content | Page images per chapter |
+| Content | Page images per chapter (ordered by ContentNum) |
 | Genre / Bridge\_Manga\_Genre | Genres with many-to-many manga mapping |
 | Author / Bridge\_Manga\_Author | Authors with many-to-many manga mapping |
-| Slider | Homepage banner images linked to manga |
-| MangaViewCount | View tracking per user per manga |
+| Comment | Threaded comments per chapter (supports replies via ParentCommentId, soft delete) |
+| CommentLike | Like tracking per comment per user |
+| CommentReport | Report submissions per comment with optional reason |
 
 ---
 

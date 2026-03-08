@@ -2,6 +2,10 @@
 
 A full-stack web application for reading and managing manga, built with **ASP.NET MVC (C#)** following the MVC architectural pattern.
 
+| ![1](web_testing_img/img_git/1.png) | ![2](web_testing_img/img_git/2.png) | ![3](web_testing_img/img_git/4.png) |
+| ![4](web_testing_img/img_git/5.png) | ![5](web_testing_img/img_git/6.png) | ![6](web_testing_img/img_git/7.png) |
+| ![7](web_testing_img/img_git/8.png) | ![8](web_testing_img/img_git/9.png) | ![9](web_testing_img/img_git/10.png) |
+| ![10](web_testing_img/img_git/11.png) | ![11](web_testing_img/img_git/12.png) | ![12](web_testing_img/img_git/15.png) |
 ---
 
 ## Features

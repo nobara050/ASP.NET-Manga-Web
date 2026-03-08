@@ -8,13 +8,5 @@
 - Quản lý thể loại Genre: (GenreId, Name) => Làm sau Bridge_Manga_Genre (MangaId, GenreId) 
 - Quản lý tác giả Author: (AuthorId, Name) => Làm sau Bridge_Manga_Author (MangaId, AuthorId)
 - Quản lý slider Slider (SliderId, MangaId, Image)
-- Quản lý thống kê (khoan làm)
-- Quản lý bình luận (ưu tiên thấp)
-
+- Quản lý bình luận 
 - MangaViewCount để quản lý số người xem truyện (MangaId, AccountId, ViewDate)
-
-Các lỗi và điều cần làm:
--- Chỗ <View của Action Create và Update, Controller Manga> có lỗi hiển thị chỗ checkbox các thể loại. Yêu cầu sửa lại cho nếu tên thể loại quá dài sẽ ba chấm hoặc xuống dòng tại chỗ, không làm cho nút check và chữ bị tách dòng.
-
--- Fix lại dialog, dùng dialog chung. Tham khảo mẫu của manga controller, action index xóa
-
